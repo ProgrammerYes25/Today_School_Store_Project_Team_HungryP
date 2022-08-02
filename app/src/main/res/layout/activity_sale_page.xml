@@ -49,7 +49,7 @@
                     android:textColor="#CD7B97"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
-                    android:text="피자빵"/>
+                    android:text="피크닉 400원"/>
             </LinearLayout>
             <ImageView
                 android:id="@+id/r"
