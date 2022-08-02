@@ -10,11 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Today_School_Store_Project_Team_HungryP" >
         <activity
-            android:name=".activity_new_page"
-            android:exported="false" />
+            android:name=".NewPageActivity"
+            android:exported="true" />
         <activity
             android:name=".PricePageActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true" >
