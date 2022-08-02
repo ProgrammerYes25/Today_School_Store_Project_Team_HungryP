@@ -41,7 +41,7 @@
                     android:layout_height="37dp"
                     android:text="음료"
                     android:layout_marginLeft="15dp"
-                    android:background="@drawable/btn_design"/>
+                    android:backgroundTint="@drawable/btn_design"/>
             </LinearLayout>
         </HorizontalScrollView>
     </LinearLayout>
