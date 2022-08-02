@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="5dp"
-    tools:context=".NewPageActivity">
+    tools:context=".SalePageActivity">
 
     <FrameLayout
         android:layout_width="wrap_content"
@@ -39,7 +39,7 @@
                     android:layout_marginRight="30dp"
                     android:layout_marginLeft="30dp"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/pizza" />
+                    android:src="@drawable/piknic" />
                 <TextView
                     android:id="@+id/textv"
                     android:layout_width="match_parent"
@@ -49,7 +49,7 @@
                     android:textColor="#CD7B97"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
-                    android:text="피크닉"/>
+                    android:text="피자빵"/>
             </LinearLayout>
             <ImageView
                 android:id="@+id/r"
@@ -65,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
-            android:src="@drawable/newicon"/>
+            android:src="@drawable/sale"/>
 
     </FrameLayout>
 
