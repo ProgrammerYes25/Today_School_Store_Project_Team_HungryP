@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Today_School_Store_Project_Team_HungryP">
         <activity
+            android:name=".dbAddDataPageActivity"
+            android:exported="true" />
+        <activity
             android:name=".PopularPageActivity"
             android:exported="false" />
         <activity
