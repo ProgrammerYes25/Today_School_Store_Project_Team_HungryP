@@ -56,6 +56,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
@@ -64,66 +65,72 @@
             android:layout_marginTop="10dp"
             android:textSize="15sp"
             android:text="카테고리"/>
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
-            <LinearLayout
+            <RadioGroup
+                android:id="@+id/Layout_category"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
+                android:layout_height="wrap_content"
+
+                android:orientation="vertical">
+                <RadioButton
                     android:id="@+id/btn_drink"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:checked="false"
                     android:text="음료"
                     android:textColor="@color/black"
                     android:gravity="center"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="10dp"
                     android:background="@drawable/btn_design"/>
-                <TextView
+                <RadioButton
                     android:id="@+id/btn_snacks"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:checked="false"
                     android:text="과자류"
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/btn_design"/>
-                <TextView
+                <RadioButton
                     android:id="@+id/btn_icecream"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:checked="false"
                     android:text="아이스크림"
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/btn_design"/>
-                <TextView
+                <RadioButton
                     android:id="@+id/btn_ice"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:checked="false"
                     android:text="냉동 식품"
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/btn_design"/>
-                <TextView
+                <RadioButton
                     android:id="@+id/btn_etc"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:checked="true"
                     android:text="기타잡화 "
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/btn_design"/>
-            </LinearLayout>
-        </HorizontalScrollView>
+            </RadioGroup>
     </LinearLayout>
     <Button
         android:id="@+id/btn_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="입력"/>
-
 </LinearLayout>
