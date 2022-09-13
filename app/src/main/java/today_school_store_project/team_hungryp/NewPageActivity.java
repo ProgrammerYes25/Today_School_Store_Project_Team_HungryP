@@ -15,7 +15,7 @@ public class NewPageActivity extends AppCompatActivity {
     String[] text = {"피자빵", "피크닉", "감자알칩", "자유시간"};
     ImageView rbtn, lbtn, imgV1;
     TextView textvi;
-    int foodi = 0;
+    int foodi =0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
