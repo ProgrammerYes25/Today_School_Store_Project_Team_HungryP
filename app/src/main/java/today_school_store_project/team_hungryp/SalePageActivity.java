@@ -36,6 +36,7 @@ public class SalePageActivity extends AppCompatActivity {
                 textvi.setText(text[foodi]);
             }
         });
+
         lbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
