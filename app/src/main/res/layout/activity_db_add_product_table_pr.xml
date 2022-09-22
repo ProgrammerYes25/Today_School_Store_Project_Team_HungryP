@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="25dp"
-    android:layout_gravity="center_horizontal">
+    android:layout_gravity="center_horizontal"
+    tools:context=".db_add_product_table_pr">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -65,72 +68,143 @@
             android:layout_marginTop="10dp"
             android:textSize="15sp"
             android:text="카테고리"/>
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <RadioGroup
                 android:id="@+id/Layout_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:orientation="vertical">
+                android:orientation="horizontal">
                 <RadioButton
                     android:id="@+id/btn_drink"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:checked="false"
                     android:text="음료"
                     android:textColor="@color/black"
                     android:gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/btn_design"/>
+                    android:layout_marginLeft="10dp"/>
                 <RadioButton
                     android:id="@+id/btn_snacks"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:checked="false"
                     android:text="과자류"
                     android:textColor="@color/black"
                     android:gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/btn_design"/>
+                    android:layout_marginLeft="10dp"/>
                 <RadioButton
                     android:id="@+id/btn_icecream"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:checked="false"
                     android:text="아이스크림"
                     android:textColor="@color/black"
                     android:gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/btn_design"/>
+                    android:layout_marginLeft="10dp"/>
                 <RadioButton
                     android:id="@+id/btn_ice"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:checked="false"
                     android:text="냉동 식품"
                     android:textColor="@color/black"
                     android:gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/btn_design"/>
+                    android:layout_marginLeft="10dp" />
                 <RadioButton
                     android:id="@+id/btn_etc"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:checked="true"
                     android:text="기타잡화 "
                     android:textColor="@color/black"
                     android:gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/btn_design"/>
+                    android:layout_marginLeft="10dp" />
             </RadioGroup>
+        </HorizontalScrollView>
     </LinearLayout>
-    <Button
-        android:id="@+id/btn_input"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="입력"/>
+        >
+        <Button
+            android:id="@+id/btn_init"
+            android:layout_weight="1"
+            android:textSize="9sp"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="초기화"/>
+        <Button
+            android:id="@+id/btn_insert"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="입력"/>
+        <Button
+            android:id="@+id/btn_update"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="수정"/>
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="삭제"/>
+        <Button
+            android:id="@+id/btn_select"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="조회"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/edit_result_no"
+            android:enabled="false"
+            android:background="@color/purple_200"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <EditText
+            android:id="@+id/edit_result_name"
+            android:enabled="false"
+            android:background="@color/purple_200"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <EditText
+            android:id="@+id/edit_result_pr"
+            android:enabled="false"
+            android:background="@color/purple_200"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <EditText
+            android:id="@+id/edit_result_c"
+            android:enabled="false"
+            android:background="@color/purple_200"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
 </LinearLayout>
