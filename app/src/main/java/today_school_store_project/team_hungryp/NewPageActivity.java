@@ -1,5 +1,4 @@
 package today_school_store_project.team_hungryp;
-
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 

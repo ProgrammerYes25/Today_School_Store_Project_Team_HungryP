@@ -45,7 +45,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:textStyle="bold"
-                    android:textColor="#CD7B97"
+                    android:textColor="#FFFFFF"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:text="피자빵"/>
@@ -59,13 +59,10 @@
                 android:src="@drawable/polygon_r"
                 android:layout_gravity="center_vertical"/>
         </LinearLayout>
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             android:src="@drawable/newicon"/>
-
     </FrameLayout>
-
 </LinearLayout>

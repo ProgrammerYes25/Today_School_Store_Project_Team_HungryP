@@ -1,30 +1,24 @@
 package today_school_store_project.team_hungryp;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 public class SalePageActivity extends AppCompatActivity {
     int[] food = {R.drawable.pizza, R.drawable.piknic, R.drawable.potato, R.drawable.chocolate};
     String[] text = {"피자빵", "피크닉", "감자알칩", "자유시간"};
     ImageView rbtn, lbtn, imgV1;
     TextView textvi;
     int foodi = 0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sale_page);
-
         setTitle("할인 상품 페이지");
         rbtn = findViewById(R.id.r);
         lbtn = findViewById(R.id.l);
         imgV1 = findViewById(R.id.imgv1);
         textvi = findViewById(R.id.textv);
-
         rbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

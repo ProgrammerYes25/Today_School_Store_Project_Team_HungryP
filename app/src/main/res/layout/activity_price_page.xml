@@ -42,7 +42,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="음료"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:layout_marginLeft="15dp"
                     android:background="@drawable/btn_design"/>
@@ -50,7 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="과자류"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/btn_design"/>
@@ -58,7 +58,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="아이스크림"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/btn_design"/>
@@ -66,7 +66,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="냉동 식품"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/btn_design"/>
@@ -74,7 +74,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="기타잡화 "
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/btn_design"/>
