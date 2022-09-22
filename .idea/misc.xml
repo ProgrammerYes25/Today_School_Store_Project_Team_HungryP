@@ -3,10 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Android_Project_HungryP/Today_School_Store_Project_Team_HungryP/app/src/main/res/layout/activity_db_add_data_page.xml" value="0.1" />
+        <entry key="..\:/Android_Project_HungryP/Today_School_Store_Project_Team_HungryP/app/src/main/res/layout/activity_db_add_data_page.xml" value="0.25" />
+        <entry key="..\:/Android_Project_HungryP/Today_School_Store_Project_Team_HungryP/app/src/main/res/layout/activity_db_add_product_table_pr.xml" value="0.25" />
         <entry key="..\:/Android_Project_HungryP/Today_School_Store_Project_Team_HungryP/app/src/main/res/layout/activity_popular_page.xml" value="0.1" />
         <entry key="..\:/Android_Project_HungryP/Today_School_Store_Project_Team_HungryP/app/src/main/res/layout/activity_price_page.xml" value="0.25" />
         <entry key="..\:/Android_Project_HungryP/Today_School_Store_Project_Team_HungryP/app/src/main/res/layout/activity_sale_page.xml" value="0.129981884057971" />
+        <entry key="..\:/Android_Project_HungryP/Today_School_Store_Project_Team_HungryP/app/src/main/res/layout/activity_test.xml" value="0.1" />
         <entry key="..\:/Android_Project_HungryP/Today_School_Store_Project_Team_HungryP/app/src/main/res/layout/db_add_product_table_dlg.xml" value="0.25" />
         <entry key="..\:/Android_Project_HungryP/Today_School_Store_Project_Team_HungryP/app/src/main/res/layout/db_add_product_table_layout.xml" value="0.25" />
         <entry key="..\:/Android_Project_HungryP/Today_School_Store_Project_Team_HungryP/app/src/main/res/menu/home.xml" value="0.19947916666666668" />
