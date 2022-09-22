@@ -70,27 +70,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/num4"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="60dp"/>
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="290dp"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/top8_rectangle"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:layout_marginLeft="20dp"/>
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="280dp"
+            android:src="@drawable/top8_rectangle"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/num5"
             android:layout_marginLeft="60dp"
             android:layout_marginTop="350dp"/>
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/top8_rectangle"
             android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="340dp"
-            android:layout_marginLeft="20dp"/>
+            android:src="@drawable/top8_rectangle" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -100,10 +103,10 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/top8_rectangle"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="400dp"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/top8_rectangle"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -113,10 +116,10 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/top8_rectangle"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="460dp"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/top8_rectangle"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -126,10 +129,10 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/top8_rectangle"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="520dp"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/top8_rectangle"/>
     </FrameLayout>
 
 
