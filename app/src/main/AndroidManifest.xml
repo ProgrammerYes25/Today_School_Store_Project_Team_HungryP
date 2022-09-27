@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Today_School_Store_Project_Team_HungryP">
         <activity
-            android:name=".TestActivity"
-            android:exported="true" />
-        <activity
             android:name=".db_add_product_table_pr"
             android:exported="true" />
         <activity
