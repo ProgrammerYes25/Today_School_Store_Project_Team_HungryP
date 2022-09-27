@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class NewPageActivity extends AppCompatActivity {
-    int[] food = {R.drawable.pizza, R.drawable.piknic, R.drawable.potato, R.drawable.chocolate};
-    String[] text = {"피자빵", "피크닉", "감자알칩", "자유시간"};
+    int[] food = {R.drawable.pizza, R.drawable.piknic, R.drawable.potato, R.drawable.chocolate, R.drawable.grape};
+    String[] text = {"피자빵", "피크닉", "감자알칩", "자유시간", "포도알맹이"};
     ImageView rbtn, lbtn, imgV1;
     TextView textvi;
     int foodi = 0;
