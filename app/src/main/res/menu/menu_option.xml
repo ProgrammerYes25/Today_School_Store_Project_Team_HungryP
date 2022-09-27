@@ -2,23 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menu1"
-        android:title="Home"
+        android:title="홈"
         />
     <item
         android:id="@+id/menu2"
-        android:title="Price"
+        android:title="가격"
         />
     <item
         android:id="@+id/menu3"
-        android:title="Popular"
+        android:title="인기상품"
         />
     <item
         android:id="@+id/menu4"
-        android:title="New"
+        android:title="신규상품"
         />
     <item
         android:id="@+id/menu5"
-        android:title="Sale"
+        android:title="할인상품"
         />
 
 
