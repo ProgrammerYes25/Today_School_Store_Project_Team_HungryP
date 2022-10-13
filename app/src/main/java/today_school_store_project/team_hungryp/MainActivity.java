@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 ImageView imgvPop;
@@ -30,6 +33,7 @@ ImageView imgvSale;
         imgvNew.setOnClickListener(imgvListener);
         imgvPrice.setOnClickListener(imgvListener);
         imgvSale.setOnClickListener(imgvListener);
+        List<Product> productsList = initLoadMarketDatabase();
 
     }
     View.OnClickListener imgvListener = new View.OnClickListener() {
@@ -90,5 +94,16 @@ ImageView imgvSale;
 
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private List<Product> initLoadMarketDatabase(){
+        DatabaesHelper databaesHelper = new DatabaesHelper(getApplicationContext());
+        databaesHelper.OpenDatabaseFile();
+
+        List<Product> productsList = databaesHelper.getTableData();
+        Log.e("test", String.valueOf(productsList.size()));
+
+        //databaesHelper.close();
+        return productsList;
     }
 }
