@@ -15,7 +15,7 @@ public class PopularPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_popular_page);
-        setTitle("인기 상품 페이지");
+        setTitle("많이 본 상품 페이지");
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -10,7 +10,7 @@
         />
     <item
         android:id="@+id/menu3"
-        android:title="인기상품"
+        android:title="많이 본 상품"
         />
     <item
         android:id="@+id/menu4"

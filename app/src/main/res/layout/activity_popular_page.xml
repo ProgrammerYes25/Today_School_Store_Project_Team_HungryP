@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".PopularPageActivity">
-    <FrameLayout
+
+    <!--<FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <ImageView
@@ -133,7 +134,7 @@
             android:layout_marginTop="520dp"
             android:layout_marginLeft="20dp"
             android:src="@drawable/rectangle"/>
-    </FrameLayout>
+    </FrameLayout>-->
 
 
 
