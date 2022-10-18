@@ -32,11 +32,11 @@
                 android:background="@drawable/new_rectangle">
                 <ImageView
                     android:id="@+id/imgv1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="260dp"
+                    android:layout_height="260dp"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginLeft="30dp"
+                    android:scaleType="fitXY"
+                    android:layout_marginLeft="20dp"
                     android:adjustViewBounds="true"
                     android:src="@drawable/pizza" />
                 <TextView
