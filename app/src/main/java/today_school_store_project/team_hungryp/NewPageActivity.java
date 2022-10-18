@@ -1,6 +1,5 @@
 package today_school_store_project.team_hungryp;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,9 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -74,7 +71,7 @@ public class NewPageActivity extends AppCompatActivity {
                 startActivity(intentprice);
                 break;
             case R.id.menu3:
-                Intent intentpopular = new Intent(this,PopularPageActivity.class);
+                Intent intentpopular = new Intent(this, SeenALotPageActivity.class);
                 startActivity(intentpopular);
                 break;
             case R.id.menu4:

@@ -9,12 +9,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-public class PopularPageActivity extends AppCompatActivity {
+public class SeenALotPageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_popular_page);
+        setContentView(R.layout.activity_seen_a_lot_page);
         setTitle("많이 본 상품 페이지");
     }
     @Override
@@ -36,7 +36,7 @@ public class PopularPageActivity extends AppCompatActivity {
                 startActivity(intentprice);
                 break;
             case R.id.menu3:
-                Intent intentpopular = new Intent(this,PopularPageActivity.class);
+                Intent intentpopular = new Intent(this, SeenALotPageActivity.class);
                 startActivity(intentpopular);
                 break;
             case R.id.menu4:

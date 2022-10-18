@@ -8,14 +8,16 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.GridView;
 
 public class PricePageActivity extends AppCompatActivity {
-
+    GridView priceGridview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_price_page);
         setTitle("가격 페이지");
+        priceGridview = findViewById(R.id.price_gridview);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -36,7 +38,7 @@ public class PricePageActivity extends AppCompatActivity {
                 startActivity(intentprice);
                 break;
             case R.id.menu3:
-                Intent intentpopular = new Intent(this,PopularPageActivity.class);
+                Intent intentpopular = new Intent(this, SeenALotPageActivity.class);
                 startActivity(intentpopular);
                 break;
             case R.id.menu4:

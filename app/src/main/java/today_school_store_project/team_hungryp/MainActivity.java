@@ -41,7 +41,7 @@ ImageView imgvSale;
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.imgv_pop:
-                    Intent intent1 = new Intent(getApplicationContext(), PopularPageActivity.class);
+                    Intent intent1 = new Intent(getApplicationContext(), SeenALotPageActivity.class);
                     startActivity(intent1);
                     break;
                 case R.id.imgv_new:
@@ -80,7 +80,7 @@ ImageView imgvSale;
                 startActivity(intentprice);
                 break;
             case R.id.menu3:
-                Intent intentpopular = new Intent(this,PopularPageActivity.class);
+                Intent intentpopular = new Intent(this, SeenALotPageActivity.class);
                 startActivity(intentpopular);
                 break;
             case R.id.menu4:

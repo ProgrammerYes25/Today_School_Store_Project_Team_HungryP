@@ -104,17 +104,13 @@
                 android:layout_gravity="center"
                 android:textSize="15sp"
                 android:text="음료"/>
-            <Spinner
-                android:id="@+id/price_spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
         </LinearLayout>
         <GridView
-            android:id="@+id/price_grid"
+            android:id="@+id/price_gridview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="15dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:numColumns="4"/>
+            android:numColumns="3">
+        </GridView>
     </LinearLayout>
 </LinearLayout>
