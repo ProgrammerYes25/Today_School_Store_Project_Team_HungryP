@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-ImageView imgvPop;
+ImageView imgvSeenalot;
 ImageView imgvNew;
 ImageView imgvPrice;
 ImageView imgvSale;
@@ -25,11 +25,11 @@ ImageView imgvSale;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("홈");
-        imgvPop = findViewById(R.id.imgv_pop);
+        imgvSeenalot = findViewById(R.id.imgv_seenalot);
         imgvNew = findViewById(R.id.imgv_new);
         imgvPrice = findViewById(R.id.imgv_price);
         imgvSale = findViewById(R.id.imgv_sale);
-        imgvPop.setOnClickListener(imgvListener);
+        imgvSeenalot.setOnClickListener(imgvListener);
         imgvNew.setOnClickListener(imgvListener);
         imgvPrice.setOnClickListener(imgvListener);
         imgvSale.setOnClickListener(imgvListener);
@@ -40,7 +40,7 @@ ImageView imgvSale;
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                case R.id.imgv_pop:
+                case R.id.imgv_seenalot:
                     Intent intent1 = new Intent(getApplicationContext(), SeenALotPageActivity.class);
                     startActivity(intent1);
                     break;
