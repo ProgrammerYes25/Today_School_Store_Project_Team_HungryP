@@ -38,15 +38,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:id="@+id/background"
+                    android:id="@+id/drink_category"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="음료"
+                    android:text="음료류"
                     android:textColor="@color/white"
                     android:gravity="center"
                     android:layout_marginLeft="15dp"
                     android:background="@drawable/btn_design"/>
                 <TextView
+                    android:id="@+id/snack_category"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="과자류"
@@ -55,6 +56,16 @@
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/btn_design"/>
                 <TextView
+                    android:id="@+id/candy_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="사탕젤리류"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/btn_design"/>
+                <TextView
+                    android:id="@+id/icecream_category"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="아이스크림"
@@ -63,6 +74,7 @@
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/btn_design"/>
                 <TextView
+                    android:id="@+id/ice_category"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="냉동 식품"
@@ -71,6 +83,7 @@
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/btn_design"/>
                 <TextView
+                    android:id="@+id/etc_category"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="기타잡화 "
@@ -105,12 +118,10 @@
                 android:textSize="15sp"
                 android:text="음료"/>
         </LinearLayout>
-        <GridView
-            android:id="@+id/price_gridview"
+        <ListView
+            android:id="@+id/price_listview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:numColumns="3">
-        </GridView>
+            android:layout_height="match_parent">
+        </ListView>
     </LinearLayout>
 </LinearLayout>

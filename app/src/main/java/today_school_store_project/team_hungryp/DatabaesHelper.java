@@ -30,66 +30,42 @@ public class DatabaesHelper extends SQLiteOpenHelper {
 
     private SQLiteDatabase pDatabase;
 
-        //생성자
-        public DatabaesHelper (Context context){
-            super(context, "todayStoreDB", null, 1);
-            Log.e(TAG, "db 생성됨 완료");
-            if (Build.VERSION.SDK_INT >= 17){
-                databasePath = context.getApplicationInfo().dataDir + "/databases/";
-            }
-            else {
-                databasePath = "/data/data/" + context.getPackageName() + "/databases/";
-            }
-
-            this.pContext = context;
-        }
-
-    //데이터 베이스 파일 열기
-    public boolean OpenDatabaseFile() throws SQLException {
-        if(!CheckDatabaseFileExist()){
-           CreateDatabase();//데이터 베이스 있는지 확인하고 없으면 생성
-        }
-        String mPath = databasePath + databaseName;
-        try {
-            pDatabase = SQLiteDatabase.openDatabase(mPath, null, SQLiteDatabase.CREATE_IF_NECESSARY);
-            Log.e(TAG, "[ERROR]"+databaseName+"Open Datadase");
-        }catch (SQLException sqlException){
-            Log.e(TAG, "[ERROR] Cat't Open Datadase");
-        }
-        return pDatabase != null;
+    //생성자
+    public DatabaesHelper (Context context){
+        super(context, databaseName, null, 1);
+        Log.e(TAG, "db 생성됨 완료");
+        databasePath = "/data/data/"+context.getPackageName()+ "/databases/";
+        this.pContext = context;
+        CheckDatabaseFileExist();
     }
-
-    private boolean CheckDatabaseFileExist() {
+    private void CheckDatabaseFileExist(){
         File file = new File(databasePath+databaseName);
-        return file.exists();
-    }
-
-    private void CreateDatabase() throws SQLException {
-        this.getReadableDatabase();
-        //this.close();
-        try {
+        if(!file.exists()){
             CopyDatabaseFile();
-            Log.e(TAG, "[SUCCESS]" + databaseName + "are Created");
-        } catch (IOException ioException) {
-            Log.e(TAG, "[ERROR]"+databaseName+"Unable to create");
-            throw new Error(TAG);
+            Log.d(TAG,"데이터 베이스 복사함");
         }
-
     }
+    private void CopyDatabaseFile(){
+        try {
+            File folder = new File(databasePath);
+            if(!folder.exists()){
+                folder.mkdir();
+            }
+            InputStream inputStream = pContext.getAssets().open(databaseName);
+            String outputFileName = databasePath+databaseName;
+            OutputStream outputStream = new FileOutputStream(outputFileName);
 
-    private void CopyDatabaseFile() throws IOException {
-        InputStream inputStream = pContext.getAssets().open(databaseName);
-        String outputFileName = databasePath+databaseName;
-        OutputStream outputStream = new FileOutputStream(outputFileName);
-
-        byte[] buffer = new byte[1024];
-        int length;
-        while ((length = inputStream.read(buffer))>0){
-            outputStream.write(buffer, 0, length);
+            byte[] pbuffer = new byte[1024];
+            int plength;
+            while ((plength = inputStream.read(pbuffer))>0){
+                outputStream.write(pbuffer, 0, plength);
+            }
+            //outputStream.flush();
+            //outputStream.close();
+            //inputStream.close();
+        }catch(IOException e){
+            e.printStackTrace();
         }
-        outputStream.flush();
-        //outputStream.close();
-       // inputStream.close();
     }
 
     public List getTableData() {
@@ -115,21 +91,21 @@ public class DatabaesHelper extends SQLiteOpenHelper {
             throw sqlException;
         }
     }
-
-    public void CloseDatabaseFile(){
-        if (pDatabase != null){
-           // pDatabase.close();
-        }
+    @Override
+    public void onOpen(SQLiteDatabase db) {
+        super.onOpen(db);
+        db.disableWriteAheadLogging();
     }
 
     public synchronized void close(){
-        CloseDatabaseFile();
-        //super.close();
+        if(pDatabase != null){
+            pDatabase.close();
+        }
+        super.close();
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
     }
 
     @Override

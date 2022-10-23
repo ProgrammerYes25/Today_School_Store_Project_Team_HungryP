@@ -15,15 +15,20 @@ import android.widget.ImageView;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-ImageView imgvSeenalot;
-ImageView imgvNew;
-ImageView imgvPrice;
-ImageView imgvSale;
+    DatabaesHelper databaesHelper;
+    ImageView imgvSeenalot;
+    ImageView imgvNew;
+    ImageView imgvPrice;
+    ImageView imgvSale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //setContentView(R.layout.loading_page);
+        databaesHelper = new DatabaesHelper(this);
+
+        //databaesHelper.CloseDatabaseFile();
         setTitle("홈");
         imgvSeenalot = findViewById(R.id.imgv_seenalot);
         imgvNew = findViewById(R.id.imgv_new);
@@ -33,7 +38,7 @@ ImageView imgvSale;
         imgvNew.setOnClickListener(imgvListener);
         imgvPrice.setOnClickListener(imgvListener);
         imgvSale.setOnClickListener(imgvListener);
-        List<Product> productsList = initLoadMarketDatabase();
+        //List<Product> productsList = initLoadMarketDatabase();
 
     }
     View.OnClickListener imgvListener = new View.OnClickListener() {
@@ -95,15 +100,16 @@ ImageView imgvSale;
         }
         return super.onOptionsItemSelected(item);
     }
-
-    private List<Product> initLoadMarketDatabase(){
-        DatabaesHelper databaesHelper = new DatabaesHelper(getApplicationContext());
-        databaesHelper.OpenDatabaseFile();
-
-        List<Product> productsList = databaesHelper.getTableData();
-        Log.e("test", String.valueOf(productsList.size()));
-
-        //databaesHelper.close();
-        return productsList;
-    }
+//
+//    private List<Product> initLoadMarketDatabase(){
+//        DatabaesHelper databaesHelper = new DatabaesHelper(getApplicationContext());
+//        databaesHelper.OpenDatabaseFile();
+//        setContentView(R.layout.loading_page);
+//        List<Product> productsList = databaesHelper.getTableData();
+//        Log.e("test", String.valueOf(productsList.size()));
+//        setContentView(R.layout.activity_main);
+//        //databaesHelper.close();
+//        return productsList;
+//
+//    }
 }
