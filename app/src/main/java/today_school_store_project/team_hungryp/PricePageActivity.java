@@ -45,7 +45,7 @@ public class PricePageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_price_page);
         setTitle("가격 페이지");
-
+        priceTextView = findViewById(R.id.price_menu_text);
         priceListview = findViewById(R.id.price_listview);
 
         drinkCategory = findViewById(R.id.drink_category);
@@ -72,6 +72,9 @@ public class PricePageActivity extends AppCompatActivity {
         priceListview.setAdapter(adapter);
     }
     public void setTotalList(Cursor cursor){
+        if(cursor!=null){
+            totalList.clear();
+        }
         while(cursor.moveToNext()){
             totalList.add(cursor.getString(1)+"\n 가격 : "+cursor.getInt(2)+" 원");
         }
@@ -82,30 +85,43 @@ public class PricePageActivity extends AppCompatActivity {
             Cursor cursor;
             switch (v.getId()) {
                 case R.id.drink_category:
-                    cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=" + drinkCategory.getText().toString() + ";", null);
+                    priceTextView.setText(drinkCategory.getText());
+                    cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=\"음료류\";", null);
                     setTotalList(cursor);
+                    adapter.notifyDataSetChanged();
                     break;
                 case R.id.snack_category:
-                    cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=" + snackCategory.getText().toString() + ";", null);
+                    priceTextView.setText(snackCategory.getText());
+                    cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=\"과자류\";", null);
                     setTotalList(cursor);
+                    adapter.notifyDataSetChanged();
                     break;
                 case R.id.candy_category:
-                    cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=" + candyCategory.getText().toString() + ";", null);
+                    priceTextView.setText(candyCategory.getText());
+                    cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=\"사탕젤리류\";", null);
                     setTotalList(cursor);
+                    adapter.notifyDataSetChanged();
                     break;
                 case R.id.icecream_category:
-                    cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=" + icecreamCategory.getText().toString() + ";", null);
+                    priceTextView.setText(icecreamCategory.getText());
+                    cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=\"아이스크림류\";", null);
                     setTotalList(cursor);
+                    adapter.notifyDataSetChanged();
                     break;
                 case R.id.ice_category:
-                    cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=" + iceCategory.getText().toString() + ";", null);
+                    priceTextView.setText(iceCategory.getText());
+                    cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=\"냉동식품\";", null);
                     setTotalList(cursor);
+                    adapter.notifyDataSetChanged();
                     break;
                 case R.id.etc_category:
-                    cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=" + etcCategory.getText().toString() + ";", null);
+                    priceTextView.setText(etcCategory.getText());
+                    cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=\"기타잡화\";", null);
                     setTotalList(cursor);
+                    adapter.notifyDataSetChanged();
                     break;
             }
+
         }
     };
 
