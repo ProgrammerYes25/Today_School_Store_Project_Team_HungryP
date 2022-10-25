@@ -11,7 +11,7 @@
         android:theme="@style/Theme.Today_School_Store_Project_Team_HungryP">
 
         <activity
-            android:name=".SeenALotPageActivity"
+            android:name=".PopularActivity"
             android:exported="false" />
         <activity
             android:name=".SalePageActivity"

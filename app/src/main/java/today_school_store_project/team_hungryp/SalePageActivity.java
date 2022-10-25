@@ -68,7 +68,7 @@ public class SalePageActivity extends AppCompatActivity {
                 startActivity(intentprice);
                 break;
             case R.id.menu3:
-                Intent intentpopular = new Intent(this, SeenALotPageActivity.class);
+                Intent intentpopular = new Intent(this, PopularActivity.class);
                 startActivity(intentpopular);
                 break;
             case R.id.menu4:

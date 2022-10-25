@@ -5,14 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     DatabaesHelper databaesHelper;
@@ -46,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.imgv_seenalot:
-                    Intent intent1 = new Intent(getApplicationContext(), SeenALotPageActivity.class);
+                    Intent intent1 = new Intent(getApplicationContext(), PopularActivity.class);
                     startActivity(intent1);
                     break;
                 case R.id.imgv_new:
@@ -85,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentprice);
                 break;
             case R.id.menu3:
-                Intent intentpopular = new Intent(this, SeenALotPageActivity.class);
+                Intent intentpopular = new Intent(this, PopularActivity.class);
                 startActivity(intentpopular);
                 break;
             case R.id.menu4:
