@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:src="@drawable/imgv_seenalot"/>
+            android:src="@drawable/group_25"/>
         <ImageView
             android:id="@+id/imgv_new"
             android:layout_width="wrap_content"

@@ -15,7 +15,7 @@ public class SeenALotPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seen_a_lot_page);
-        setTitle("많이 본 상품 페이지");
+        setTitle("인기 상품 페이지");
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
