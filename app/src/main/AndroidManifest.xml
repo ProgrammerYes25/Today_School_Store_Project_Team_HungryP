@@ -10,7 +10,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Today_School_Store_Project_Team_HungryP">
-
         <activity
             android:name=".PopularActivity"
             android:exported="false" />

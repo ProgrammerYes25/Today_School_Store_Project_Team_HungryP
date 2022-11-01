@@ -38,7 +38,7 @@
                     android:scaleType="fitXY"
                     android:layout_marginLeft="20dp"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/pizza" />
+                    android:background="@color/white" />
                 <TextView
                     android:id="@+id/textv"
                     android:layout_width="match_parent"

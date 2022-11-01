@@ -3,6 +3,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -10,11 +12,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+
 public class SalePageActivity extends AppCompatActivity {
-    int[] food = {R.drawable.pizza, R.drawable.piknic, R.drawable.potato, R.drawable.chocolate, R.drawable.grape};
+    int[] food = {};
     String[] text = {"피자빵", "피크닉", "감자알칩", "자유시간","포도알맹이"};
     ImageView rbtn, lbtn, imgV1;
     TextView textvi;
+    ArrayList<String> textList;
+    DatabaesHelper databaesHelper;
+    SQLiteDatabase sqlDB;
     int foodi = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,15 +33,22 @@ public class SalePageActivity extends AppCompatActivity {
         lbtn = findViewById(R.id.l);
         imgV1 = findViewById(R.id.imgv1);
         textvi = findViewById(R.id.textv);
+        databaesHelper = new DatabaesHelper(this);
+        sqlDB = databaesHelper.getReadableDatabase();
+        Cursor cursor;
+        cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_dcprice = 1;",null);
+        textList = new ArrayList<String>();
+        setTextList(cursor);
+        textvi.setText(textList.get(foodi));
         rbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 foodi++;        //배열 넘어가는 인덱스
-                if(foodi ==food.length) {        //현재 마지막 사진인지 확인한는 조건문
+                if(foodi ==textList.size()) {        //현재 마지막 사진인지 확인한는 조건문
                     foodi = 0;                //처음으로 인덱스 바꿈
                 }
-                imgV1.setImageResource(food[foodi]);    //이미지 바꿈
-                textvi.setText(text[foodi]);
+                //imgV1.setImageResource(food[foodi]);    //이미지 바꿈
+                textvi.setText(textList.get(foodi));
             }
         });
 
@@ -42,12 +57,20 @@ public class SalePageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 foodi--;        //배열 넘어가는 인덱스
                 if(foodi == -1) {               //현재 마지막 사진인지 확인한는 조건문
-                    foodi = food.length-1;  //처음으로 인덱스 바꿈
+                    foodi = textList.size()-1;  //처음으로 인덱스 바꿈
                 }
-                imgV1.setImageResource(food[foodi]);    //이미지 바꿈
-                textvi.setText(text[foodi]);
+                //imgV1.setImageResource(food[foodi]);    //이미지 바꿈
+                textvi.setText(textList.get(foodi));
             }
         });
+    }
+    public void setTextList(Cursor cursor){
+        if(cursor.isAfterLast()){
+            textList.add("현재 할인상품이 없습니다.\n업데이트를 기대해주세요");
+        }
+        while(cursor.moveToNext()){
+            textList.add(cursor.getString(1));
+        }
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
