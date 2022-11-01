@@ -21,7 +21,6 @@ public class PricePageActivity extends AppCompatActivity {
 
     ListView priceListview;
     TextView priceTextView;
-    int[] categoryIDList = new int[]{R.id.drink_category, R.id.icecream_category, R.id.candy_category,R.id.icecream_category, R.id.ice_category, R.id.etc_category};
     ArrayList totalList;
     ArrayAdapter<String> adapter;
     DatabaesHelper databaesHelper;

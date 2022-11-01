@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,25 +15,33 @@ import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
     DatabaesHelper databaesHelper;
-    ImageView imgvSeenalot;
+    ImageView imgvPopular;
     ImageView imgvNew;
     ImageView imgvPrice;
     ImageView imgvSale;
-
+    SQLiteDatabase pDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //setContentView(R.layout.loading_page);
         databaesHelper = new DatabaesHelper(this);
-
+        pDatabase = databaesHelper.getWritableDatabase();
+//        Cursor cursor = pDatabase.rawQuery("SELEct * From prTable Where pr_no = 0;",null);
+//        int version = pDatabase.getVersion();
+//        while (cursor.moveToNext()){
+//            version = cursor.getInt(2);
+//        }
+//        if(version != pDatabase.getVersion()){
+//            databaesHelper.onUpgrade(pDatabase, pDatabase.getVersion(),version);
+//        }
+        //pDatabase.close();
         //databaesHelper.CloseDatabaseFile();
         setTitle("홈");
-        imgvSeenalot = findViewById(R.id.imgv_seenalot);
+        imgvPopular = findViewById(R.id.imgv_popular);
         imgvNew = findViewById(R.id.imgv_new);
         imgvPrice = findViewById(R.id.imgv_price);
         imgvSale = findViewById(R.id.imgv_sale);
-        imgvSeenalot.setOnClickListener(imgvListener);
+        imgvPopular.setOnClickListener(imgvListener);
         imgvNew.setOnClickListener(imgvListener);
         imgvPrice.setOnClickListener(imgvListener);
         imgvSale.setOnClickListener(imgvListener);
@@ -42,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                case R.id.imgv_seenalot:
+                case R.id.imgv_popular:
                     Intent intent1 = new Intent(getApplicationContext(), PopularActivity.class);
                     startActivity(intent1);
                     break;
