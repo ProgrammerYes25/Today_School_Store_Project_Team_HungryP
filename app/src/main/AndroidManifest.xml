@@ -12,7 +12,7 @@
         android:theme="@style/Theme.Today_School_Store_Project_Team_HungryP">
         <activity
             android:name=".PopularActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".SalePageActivity"
             android:exported="true" />

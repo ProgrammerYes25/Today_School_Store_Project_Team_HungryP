@@ -16,28 +16,30 @@
             android:src="@drawable/star"
             android:layout_marginTop="45dp"
             android:layout_marginLeft="65dp"/>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rectangle_s"
-        android:orientation="vertical"
-        android:layout_marginTop="80dp"
-        android:layout_marginLeft="40dp">
-        <ImageView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/grape2"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginBottom="3dp"
-            android:text="test"/>
+            android:background="@drawable/rectangle_s"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="5dp">
+            <ImageView
+                android:id="@+id/top_2_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/grape2"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/top_2_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="test"/>
 
-    </LinearLayout>
+        </LinearLayout>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -47,28 +49,31 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="25dp"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rectangle_s"
-        android:orientation="vertical"
-        android:layout_marginTop="60dp"
-        android:layout_marginLeft="155dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle_s"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="145dp"
+            android:layout_marginBottom="5dp">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/piknic_s"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginBottom="3dp"
-            android:text="test"/>
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/top_1_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/piknic_s"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/top_1_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="5pt"
+                android:layout_marginTop="5dp"
+                android:text="test"/>
+        </LinearLayout>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -78,35 +83,37 @@
             android:layout_marginRight="65dp"
             android:layout_marginTop="65dp"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rectangle_s"
-        android:orientation="vertical"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="270dp">
-        <ImageView
-            android:layout_width="85dp"
-            android:layout_height="85dp"
-            android:src="@drawable/chocolate"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"/>
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginBottom="3dp"
-            android:text="test"/>
-    </LinearLayout>
+            android:background="@drawable/rectangle_s"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="260dp"
+            android:layout_marginBottom="5dp">
+            <ImageView
+                android:id="@+id/top_3_img"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:src="@drawable/chocolate"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/top_3_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="test"/>
+        </LinearLayout>
 
 
         <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-            android:layout_marginTop="190dp"
-        android:src="@drawable/awards" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="200dp"
+            android:src="@drawable/awards" />
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -114,11 +121,14 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="310dp"/>
         <TextView
+            android:id="@+id/top_4_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="300dp"
+            android:textStyle="bold"
+            android:padding="10dp"
             android:background="@drawable/rectangle"/>
         <ImageView
             android:layout_width="wrap_content"
@@ -128,11 +138,14 @@
             android:layout_marginTop="370dp"/>
 
         <TextView
+            android:id="@+id/top_5_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="360dp"
+            android:textStyle="bold"
+            android:padding="10dp"
             android:background="@drawable/rectangle" />
 
         <ImageView
@@ -142,11 +155,14 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="430dp"/>
         <TextView
+            android:id="@+id/top_6_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="420dp"
             android:layout_marginLeft="20dp"
+            android:textStyle="bold"
+            android:padding="10dp"
             android:background="@drawable/rectangle"/>
         <ImageView
             android:layout_width="wrap_content"
@@ -155,11 +171,14 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="490dp"/>
         <TextView
+            android:id="@+id/top_7_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="480dp"
             android:layout_marginLeft="20dp"
+            android:textStyle="bold"
+            android:padding="10dp"
             android:background="@drawable/rectangle"/>
         <ImageView
             android:layout_width="wrap_content"
@@ -168,11 +187,14 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="550dp"/>
         <TextView
+            android:id="@+id/top_8_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="540dp"
             android:layout_marginLeft="20dp"
+            android:textStyle="bold"
+            android:padding="10dp"
             android:background="@drawable/rectangle"/>
         <ImageView
             android:layout_width="wrap_content"
@@ -181,11 +203,14 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="610dp"/>
         <TextView
+            android:id="@+id/top_9_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="600dp"
             android:layout_marginLeft="20dp"
+            android:textStyle="bold"
+            android:padding="10dp"
             android:background="@drawable/rectangle"/>
     </FrameLayout>
 
