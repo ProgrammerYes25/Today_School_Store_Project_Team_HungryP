@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class PopularActivity extends AppCompatActivity {
@@ -17,6 +18,8 @@ public class PopularActivity extends AppCompatActivity {
     SQLiteDatabase sqlDB;
     TextView top1Text, top2Text, top3Text, top4Text, top5Text, top6Text
     , top7Text, top8Text, top9Text;
+    ImageView top1img, top2img, top3img;
+    int[] imgList = {R.drawable.wheim, R.drawable.hershey, R.drawable.ohyes};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +36,16 @@ public class PopularActivity extends AppCompatActivity {
         top7Text = findViewById(R.id.top_7_text);
         top8Text = findViewById(R.id.top_8_text);
         top9Text = findViewById(R.id.top_9_text);
+        top1img = findViewById(R.id.top_1_img);
+        top2img = findViewById(R.id.top_2_img);
+        top3img = findViewById(R.id.top_3_img);
 
         databaesHelper = new DatabaesHelper(this);
         sqlDB = databaesHelper.getReadableDatabase();
+        top1img.setImageResource(imgList[0]);
+        top2img.setImageResource(imgList[1]);
+        top3img.setImageResource(imgList[2]);
+
         Cursor cursor;
         cursor = sqlDB.rawQuery("SELECT * FROM prTable WHERE pr_popular = 1;",null);
         setPopularList(top1Text, cursor);

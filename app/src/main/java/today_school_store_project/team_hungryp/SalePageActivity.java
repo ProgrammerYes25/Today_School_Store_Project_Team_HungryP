@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,7 @@ public class SalePageActivity extends AppCompatActivity {
     ArrayList<String> textList;
     DatabaesHelper databaesHelper;
     SQLiteDatabase sqlDB;
+
     int foodi = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,9 @@ public class SalePageActivity extends AppCompatActivity {
         rbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(textList.get(0).equals("현재 할인상품이 없습니다.\n업데이트를 기대해주세요" )){
+                    Toast.makeText(getApplicationContext(), "현재 할인상품이 없습니다.", Toast.LENGTH_SHORT).show();
+                }
                 foodi++;        //배열 넘어가는 인덱스
                 if(foodi ==textList.size()) {        //현재 마지막 사진인지 확인한는 조건문
                     foodi = 0;                //처음으로 인덱스 바꿈
@@ -55,6 +60,9 @@ public class SalePageActivity extends AppCompatActivity {
         lbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(textList.get(0).equals("현재 할인상품이 없습니다.\n업데이트를 기대해주세요" )){
+                    Toast.makeText(getApplicationContext(), "현재 할인상품이 없습니다.", Toast.LENGTH_SHORT).show();
+                }
                 foodi--;        //배열 넘어가는 인덱스
                 if(foodi == -1) {               //현재 마지막 사진인지 확인한는 조건문
                     foodi = textList.size()-1;  //처음으로 인덱스 바꿈

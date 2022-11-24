@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".PopularActivity">
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -23,12 +22,12 @@
             android:orientation="vertical"
             android:padding="10dp"
             android:layout_marginTop="80dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="45dp"
             android:layout_marginBottom="5dp">
             <ImageView
                 android:id="@+id/top_2_img"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
                 android:src="@drawable/grape2"
                 android:layout_gravity="center"/>
             <TextView
@@ -56,13 +55,13 @@
             android:orientation="vertical"
             android:padding="10dp"
             android:layout_marginTop="60dp"
-            android:layout_marginLeft="145dp"
+            android:layout_marginLeft="155dp"
             android:layout_marginBottom="5dp">
 
             <ImageView
                 android:id="@+id/top_1_img"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
                 android:src="@drawable/piknic_s"
                 android:layout_gravity="center"/>
             <TextView
@@ -90,7 +89,7 @@
             android:orientation="vertical"
             android:padding="10dp"
             android:layout_marginTop="100dp"
-            android:layout_marginLeft="260dp"
+            android:layout_marginLeft="265dp"
             android:layout_marginBottom="5dp">
             <ImageView
                 android:id="@+id/top_3_img"
