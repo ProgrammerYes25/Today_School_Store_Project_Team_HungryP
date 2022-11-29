@@ -21,7 +21,8 @@
             android:exported="true" />
         <activity
             android:name=".PricePageActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

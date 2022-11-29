@@ -6,11 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -60,7 +63,17 @@ public class PricePageActivity extends AppCompatActivity {
         totalList = new ArrayList();
         setTotalList(cursor);
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, totalList);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, totalList){
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                TextView tv = view.findViewById(android.R.id.text1);
+                tv.setTextColor(Color.BLACK);
+                tv.setPadding(40,20,20,20);
+                tv.setBackgroundResource(R.drawable.textlayout);
+                return view;
+            }
+        };
         priceListview.setAdapter(adapter);
     }
     public void setTotalList(Cursor cursor){
