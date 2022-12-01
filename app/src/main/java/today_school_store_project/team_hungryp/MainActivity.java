@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ViewFlipper;
 
 public class MainActivity extends AppCompatActivity {
     DatabaesHelper databaesHelper;
@@ -24,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ViewFlipper viewFlip = findViewById(R.id.viewFlip);
+        viewFlip.setFlipInterval(5000);
+        viewFlip.startFlipping();
         databaesHelper = new DatabaesHelper(this);
         pDatabase = databaesHelper.getWritableDatabase();
 //        Cursor cursor = pDatabase.rawQuery("SELEct * From prTable Where pr_no = 0;",null);
