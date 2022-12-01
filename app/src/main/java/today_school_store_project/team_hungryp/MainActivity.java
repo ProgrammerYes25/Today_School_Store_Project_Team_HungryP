@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-//
+
 //    private List<Product> initLoadMarketDatabase(){
 //        DatabaesHelper databaesHelper = new DatabaesHelper(getApplicationContext());
 //        databaesHelper.OpenDatabaseFile();

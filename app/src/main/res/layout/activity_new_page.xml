@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="5dp"
-    tools:context=".NewPageActivity">
+    tools:context=".NewPageActivity"
+    android:background="@color/white">
 
     <FrameLayout
         android:layout_width="wrap_content"
