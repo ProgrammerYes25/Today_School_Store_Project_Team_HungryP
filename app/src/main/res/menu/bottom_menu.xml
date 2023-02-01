@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/price_page"
+        android:enabled="true"
+        android:title="가격"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/new_page"
+        android:enabled="true"
+        android:title="신상품"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/main_page"
+        android:enabled="true"
+        android:title="홈"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/sale_page"
+        android:enabled="true"
+        android:title="할인"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/popular_page"
+        android:enabled="true"
+        android:title="인기"
+        app:showAsAction="always"
+        />
+</menu>
