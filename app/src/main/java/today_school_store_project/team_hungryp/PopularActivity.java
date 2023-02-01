@@ -27,51 +27,28 @@ public class PopularActivity extends AppCompatActivity {
         setContentView(R.layout.activity_popular);
         setTitle("인기 상품 페이지");
 
-        top1Text = findViewById(R.id.top_1_text);
-        top2Text = findViewById(R.id.top_2_text);
-        top3Text = findViewById(R.id.top_3_text);
-        top4Text = findViewById(R.id.top_4_text);
-        top5Text = findViewById(R.id.top_5_text);
-        top6Text = findViewById(R.id.top_6_text);
-        top7Text = findViewById(R.id.top_7_text);
-        top8Text = findViewById(R.id.top_8_text);
-        top9Text = findViewById(R.id.top_9_text);
-        top1img = findViewById(R.id.top_1_img);
-        top2img = findViewById(R.id.top_2_img);
-        top3img = findViewById(R.id.top_3_img);
-
-        databaesHelper = new DatabaesHelper(this);
-        sqlDB = databaesHelper.getReadableDatabase();
-        top1img.setImageResource(imgList[0]);
-        top2img.setImageResource(imgList[1]);
-        top3img.setImageResource(imgList[2]);
-
-        Cursor cursor;
-        cursor = sqlDB.rawQuery("SELECT * FROM prTable WHERE pr_popular = 1;",null);
-        setPopularList(top1Text, cursor);
-        cursor = sqlDB.rawQuery("SELECT * FROM prTable WHERE pr_popular = 2;",null);
-        setPopularList(top2Text, cursor);
-        cursor = sqlDB.rawQuery("SELECT * FROM prTable WHERE pr_popular = 3;",null);
-        setPopularList(top3Text, cursor);
-        cursor = sqlDB.rawQuery("SELECT * FROM prTable WHERE pr_popular = 4;",null);
-        setPopularList(top4Text, cursor);
-        cursor = sqlDB.rawQuery("SELECT * FROM prTable WHERE pr_popular = 5;",null);
-        setPopularList(top5Text, cursor);
-        cursor = sqlDB.rawQuery("SELECT * FROM prTable WHERE pr_popular = 6;",null);
-        setPopularList(top6Text, cursor);
-        cursor = sqlDB.rawQuery("SELECT * FROM prTable WHERE pr_popular = 7;",null);
-        setPopularList(top7Text, cursor);
-        cursor = sqlDB.rawQuery("SELECT * FROM prTable WHERE pr_popular = 8;",null);
-        setPopularList(top8Text, cursor);
-        cursor = sqlDB.rawQuery("SELECT * FROM prTable WHERE pr_popular = 9;",null);
-        setPopularList(top9Text, cursor);
+//        Cursor cursor;
+//        cursor = sqlDB.rawQuery("SELECT * FROM prTable WHERE pr_popular = 1;",null);
+//        setPopularList(top1Text, cursor);
+//        cursor = sqlDB.rawQuery("SELECT * FROM prTable WHERE pr_popular = 2;",null);
+//        setPopularList(top2Text, cursor);
+//        cursor = sqlDB.rawQuery("SELECT * FROM prTable WHERE pr_popular = 3;",null);
+//        setPopularList(top3Text, cursor);
+//        cursor = sqlDB.rawQuery("SELECT * FROM prTable WHERE pr_popular = 4;",null);
+//        setPopularList(top4Text, cursor);
+//        cursor = sqlDB.rawQuery("SELECT * FROM prTable WHERE pr_popular = 5;",null);
+//        setPopularList(top5Text, cursor);
+//        cursor = sqlDB.rawQuery("SELECT * FROM prTable WHERE pr_popular = 6;",null);
+//        setPopularList(top6Text, cursor);
+//        cursor = sqlDB.rawQuery("SELECT * FROM prTable WHERE pr_popular = 7;",null);
+//        setPopularList(top7Text, cursor);
+//        cursor = sqlDB.rawQuery("SELECT * FROM prTable WHERE pr_popular = 8;",null);
+//        setPopularList(top8Text, cursor);
+//        cursor = sqlDB.rawQuery("SELECT * FROM prTable WHERE pr_popular = 9;",null);
+//        setPopularList(top9Text, cursor);
 
     }
-    public void setPopularList(TextView textView, Cursor cursor){
-        while(cursor.moveToNext()){
-            textView.setText(cursor.getString(1));
-        }
-    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater=getMenuInflater();
