@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -34,6 +35,7 @@ public class PricePageActivity extends AppCompatActivity {
     TextView icecreamCategory;
     TextView iceCategory;
     TextView etcCategory;
+    ImageView newImageView, moneyOffImageView, homeImageView, storeImageView, starImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,19 @@ public class PricePageActivity extends AppCompatActivity {
         icecreamCategory = findViewById(R.id.icecream_category);
         iceCategory = findViewById(R.id.ice_category);
         etcCategory = findViewById(R.id.etc_category);
+        //하단 메뉴바
+        newImageView = findViewById(R.id.new_image_view);
+        moneyOffImageView = findViewById(R.id.money_off_image_view);
+        homeImageView = findViewById(R.id.home_image_view);
+        storeImageView = findViewById(R.id.store_image_view);
+        starImageView = findViewById(R.id.star_image_view);
+
+        newImageView.setOnClickListener(menuOnClickListener);
+        moneyOffImageView.setOnClickListener(menuOnClickListener);
+        homeImageView.setOnClickListener(menuOnClickListener);
+        storeImageView.setOnClickListener(menuOnClickListener);
+        starImageView.setOnClickListener(menuOnClickListener);
+        // /하단 메뉴바
 
         drinkCategory.setOnClickListener(categoryListener);
         snackCategory.setOnClickListener(categoryListener);
@@ -83,6 +98,31 @@ public class PricePageActivity extends AppCompatActivity {
         while(cursor.moveToNext()){
             totalList.add(cursor.getString(1)+"\n 가격 : "+cursor.getInt(2)+" 원");
         }
+    }
+    //하단 메뉴바
+    View.OnClickListener menuOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.new_image_view:
+                    startActivityM(NewPageActivity.class);
+                    break;
+                case R.id.money_off_image_view:
+                    startActivityM(SalePageActivity.class);
+                case R.id.home_image_view:
+                    startActivityM(MainActivity.class);
+                    break;
+                case R.id.store_image_view:
+                    startActivityM(PricePageActivity.class);
+                case R.id.star_image_view:
+                    startActivityM(PopularActivity.class);
+            }
+        }
+    };
+
+    private void startActivityM(Class activityClass){ //activity전환 메소드
+        Intent intent = new Intent(this, activityClass);
+        startActivity(intent);
     }
     View.OnClickListener categoryListener = new View.OnClickListener() {
         @Override

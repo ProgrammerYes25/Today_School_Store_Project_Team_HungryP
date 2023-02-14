@@ -8,104 +8,83 @@
     android:id="@+id/container"
     android:background="@color/white"
     tools:context=".MainActivity">
-    <FrameLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-
-        android:padding="15dp"
-        android:id="@+id/containers"
-        android:layout_marginBottom="?attr/actionBarSize"
-        >
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <ViewFlipper
+                android:id="@+id/viewFlip"
+                android:layout_width="300dp"
+                android:layout_height="180dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/piknic"
+                    android:scaleType="centerCrop"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/chocolate"
+                    android:scaleType="centerCrop"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/bananamilk"
+                    android:scaleType="centerCrop"/>
+            </ViewFlipper>
+            <!--        <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/group27"/>-->
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:orientation="vertical">
-            <LinearLayout
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="10dp"
+            >
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:layout_gravity="center"
-                android:orientation="horizontal">
-                <ViewFlipper
-                    android:id="@+id/viewFlip"
-                    android:layout_width="300dp"
-                    android:layout_height="180dp">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/piknic"
-                        android:scaleType="centerCrop"/>
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/chocolate"
-                        android:scaleType="centerCrop"/>
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/bananamilk"
-                        android:scaleType="centerCrop"/>
-                </ViewFlipper>
-                <!--        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/group27"/>-->
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
+                android:textStyle="bold"
+                android:textSize="10pt"
+                android:padding="10dp"
+                android:text="MENU"/>
+            <ImageView
+                android:id="@+id/imgv_price"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="bottom"
-                android:layout_marginTop="10dp"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:textSize="10pt"
-                    android:padding="10dp"
-                    android:text="MENU"/>
-                <ImageView
-                    android:id="@+id/imgv_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:src="@drawable/group_23"/>
-                <ImageView
-                    android:id="@+id/imgv_new"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:src="@drawable/group_22"/>
-                <ImageView
-                    android:id="@+id/imgv_sale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:src="@drawable/group_24"/>
-                <ImageView
-                    android:id="@+id/imgv_popular"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:src="@drawable/group_25"/>
-            </LinearLayout>
+                android:layout_margin="10dp"
+                android:src="@drawable/group_23"/>
+            <ImageView
+                android:id="@+id/imgv_new"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:src="@drawable/group_22"/>
+            <ImageView
+                android:id="@+id/imgv_sale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:src="@drawable/group_24"/>
+            <ImageView
+                android:id="@+id/imgv_popular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:src="@drawable/group_25"/>
         </LinearLayout>
-    </FrameLayout>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="#6667AB"
-        app:menu="@menu/bottom_menu"
-        app:labelVisibilityMode="labeled"
-        android:layout_marginEnd="0dp"
-        android:layout_marginStart="0dp"
-        app:itemTextColor="@color/white"
-        />
+    </LinearLayout>
 </LinearLayout>
 
