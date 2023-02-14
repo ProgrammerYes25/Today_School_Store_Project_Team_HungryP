@@ -31,8 +31,14 @@
                 android:layout_marginRight="10dp"
                 android:gravity="center"
                 android:background="@drawable/new_rectangle">
+                <ViewFlipper
+                    android:id="@+id/viewFlip2"
+                    android:layout_width="260dp"
+                    android:layout_height="260dp"
+                    android:layout_marginRight="10dp">
                 <ImageView
                     android:id="@+id/imgv1"
+                    android:src="@drawable/cider"
                     android:layout_width="260dp"
                     android:layout_height="260dp"
                     android:layout_gravity="center_vertical"
@@ -40,6 +46,27 @@
                     android:layout_marginLeft="20dp"
                     android:adjustViewBounds="true"
                     android:background="@color/white" />
+                    <ImageView
+                        android:id="@+id/imgv2"
+                        android:src="@drawable/mychu"
+                        android:layout_width="260dp"
+                        android:layout_height="260dp"
+                        android:layout_gravity="center_vertical"
+                        android:scaleType="fitXY"
+                        android:layout_marginLeft="20dp"
+                        android:adjustViewBounds="true"
+                        android:background="@color/white" />
+                    <ImageView
+                        android:id="@+id/imgv3"
+                        android:src="@drawable/jjang"
+                        android:layout_width="260dp"
+                        android:layout_height="260dp"
+                        android:layout_gravity="center_vertical"
+                        android:scaleType="fitXY"
+                        android:layout_marginLeft="20dp"
+                        android:adjustViewBounds="true"
+                        android:background="@color/white" />
+                </ViewFlipper>
                 <TextView
                     android:id="@+id/textv"
                     android:layout_width="match_parent"
@@ -50,6 +77,7 @@
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:text="피자빵"/>
+
             </LinearLayout>
             <ImageView
                 android:id="@+id/r"

@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 import java.util.ArrayList;
 
@@ -22,7 +23,7 @@ public class NewPageActivity extends AppCompatActivity {
     ArrayList<String> textList;
     DatabaesHelper databaesHelper;
     SQLiteDatabase sqlDB;
-    ImageView rbtn, lbtn, imgV1;
+    ImageView rbtn, lbtn, imgV1,imgV2,imgV3;
     TextView textvi;
     int foodi = 0;
 
@@ -30,10 +31,15 @@ public class NewPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_page);
+        ViewFlipper viewFlip2 = findViewById(R.id.viewFlip2);
+        viewFlip2.setFlipInterval(5000);
+        viewFlip2.startFlipping();
         setTitle("신규 상품 페이지");
         rbtn = findViewById(R.id.r);
         lbtn = findViewById(R.id.l);
         imgV1 = findViewById(R.id.imgv1);
+        imgV2 = findViewById(R.id.imgv2);
+        imgV3 = findViewById(R.id.imgv3);
         textvi = findViewById(R.id.textv);
         databaesHelper = new DatabaesHelper(this);
         sqlDB = databaesHelper.getReadableDatabase();
