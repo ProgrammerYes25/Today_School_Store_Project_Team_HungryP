@@ -7,6 +7,7 @@
     android:orientation="vertical"
     android:background="@color/white"
     tools:context=".PopularActivity">
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -14,9 +15,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="25dp"
             android:textStyle="bold"
-            android:layout_marginLeft="150dp"
+            android:textColor="#434343"
+            android:layout_marginLeft="130dp"
             android:layout_marginTop="50dp"
             android:text="상품 랭킹"/>
 
@@ -27,19 +29,21 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="120dp"
+                android:layout_marginTop="140dp"
                 android:layout_marginLeft="15dp"
                 android:orientation="vertical">
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="120dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/piknic_s"/>
+                    android:src="@drawable/piknic"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:text="양지혜"/>
+                    android:layout_marginTop="10dp"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:text="피크닉"/>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -49,19 +53,21 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="120dp"
+                android:layout_marginTop="140dp"
                 android:layout_marginLeft="140dp"
                 android:orientation="vertical">
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="120dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/piknic_s"/>
+                    android:src="@drawable/pizza"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:text="양지혜"/>
+                    android:layout_marginTop="10dp"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:text="시카고 피자"/>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -71,19 +77,21 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="120dp"
+                android:layout_marginTop="140dp"
                 android:layout_marginLeft="265dp"
                 android:orientation="vertical">
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="120dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/piknic_s"/>
+                    android:src="@drawable/pkchicken"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:text="양지혜"/>
+                    android:layout_marginTop="10dp"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:text="치킨"/>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -93,7 +101,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="300dp"
+                android:layout_marginTop="320dp"
                 android:layout_marginLeft="15dp"
                 android:orientation="vertical">
                 <ImageView
@@ -104,8 +112,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:text="양지혜"/>
+                    android:layout_marginTop="10dp"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:text="자유시간"/>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -115,19 +125,21 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="300dp"
+                android:layout_marginTop="320dp"
                 android:layout_marginLeft="140dp"
                 android:orientation="vertical">
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="120dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/chocolate"/>
+                    android:src="@drawable/potato"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:text="양지혜"/>
+                    android:layout_marginTop="10dp"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:text="감자알칩"/>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -137,19 +149,21 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="300dp"
+                android:layout_marginTop="320dp"
                 android:layout_marginLeft="265dp"
                 android:orientation="vertical">
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="120dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/chocolate"/>
+                    android:src="@drawable/yomomtae"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:text="양지혜"/>
+                    android:layout_marginTop="10dp"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:text="요맘때"/>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -159,7 +173,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="480dp"
+                android:layout_marginTop="500dp"
                 android:layout_marginLeft="15dp"
                 android:orientation="vertical">
                 <ImageView
@@ -170,8 +184,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:text="양지혜"/>
+                    android:layout_marginTop="10dp"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:text="사이다"/>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -181,19 +197,21 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="480dp"
+                android:layout_marginTop="500dp"
                 android:layout_marginLeft="140dp"
                 android:orientation="vertical">
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="120dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/cider"/>
+                    android:src="@drawable/wheim"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:text="양지혜"/>
+                    android:layout_marginTop="10dp"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:text="화이트타임"/>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -203,19 +221,21 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="480dp"
+                android:layout_marginTop="500dp"
                 android:layout_marginLeft="265dp"
                 android:orientation="vertical">
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="120dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/cider"/>
+                    android:src="@drawable/hershey"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:text="양지혜"/>
+                    android:layout_marginTop="10dp"
+                    android:textColor="#000000"
+                    android:layout_gravity="center"
+                    android:text="초코우유"/>
             </LinearLayout>
         </LinearLayout>
     </FrameLayout>
