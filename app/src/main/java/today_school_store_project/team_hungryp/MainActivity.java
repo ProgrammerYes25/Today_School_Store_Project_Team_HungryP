@@ -12,9 +12,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 public class MainActivity extends AppCompatActivity {
+    private long backBtnTime = 0l;  //뒤로가기 누른 횟수 계산하기 위한 변수
     DatabaesHelper databaesHelper;
     ImageView imgvPopular;
     ImageView imgvNew;
@@ -112,6 +114,22 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {//뒤로 가기 누르면 종료
+        long curTime = System.currentTimeMillis();
+        long gapTime = curTime - backBtnTime;
+
+        if(0 <= gapTime && 2000 >= gapTime) {
+            super.onBackPressed();
+            moveTaskToBack(true);
+            android.os.Process.killProcess(android.os.Process.myPid());
+            System.exit(1);
+        }
+        else {
+            backBtnTime = curTime;
+            Toast.makeText(this, "한번 더 누르면 종료됩니다.",Toast.LENGTH_SHORT).show();
+        }
+    }
 //    private List<Product> initLoadMarketDatabase(){
 //        DatabaesHelper databaesHelper = new DatabaesHelper(getApplicationContext());
 //        databaesHelper.OpenDatabaseFile();

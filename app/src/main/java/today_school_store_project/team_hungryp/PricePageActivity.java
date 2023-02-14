@@ -109,20 +109,25 @@ public class PricePageActivity extends AppCompatActivity {
                     break;
                 case R.id.money_off_image_view:
                     startActivityM(SalePageActivity.class);
+                    break;
                 case R.id.home_image_view:
                     startActivityM(MainActivity.class);
                     break;
                 case R.id.store_image_view:
                     startActivityM(PricePageActivity.class);
+                    break;
                 case R.id.star_image_view:
                     startActivityM(PopularActivity.class);
+                    break;
             }
         }
     };
 
     private void startActivityM(Class activityClass){ //activity전환 메소드
         Intent intent = new Intent(this, activityClass);
+        finish();
         startActivity(intent);
+
     }
     View.OnClickListener categoryListener = new View.OnClickListener() {
         @Override
@@ -174,34 +179,6 @@ public class PricePageActivity extends AppCompatActivity {
         MenuInflater inflater=getMenuInflater();
         inflater.inflate(R.menu.menu_option,menu);
         return true;//super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.menu1:
-                Intent intenthome = new Intent(this,MainActivity.class);
-                startActivity(intenthome);
-                break;
-            case R.id.menu2:
-                Intent intentprice = new Intent(this,  PricePageActivity.class);
-                startActivity(intentprice);
-                break;
-            case R.id.menu3:
-                Intent intentpopular = new Intent(this, PopularActivity.class);
-                startActivity(intentpopular);
-                break;
-            case R.id.menu4:
-                Intent intentnew = new Intent(this, NewPageActivity.class);
-                startActivity(intentnew);
-                break;
-            case R.id.menu5:
-                Intent intentsale = new Intent(this, SalePageActivity.class);
-                startActivity(intentsale);
-                break;
-
-        }
-        return super.onOptionsItemSelected(item);
     }
 
 }
