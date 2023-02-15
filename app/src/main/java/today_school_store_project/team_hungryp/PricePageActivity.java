@@ -18,11 +18,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class PricePageActivity extends AppCompatActivity {
-
+    private long backBtnTime = 0l;  //뒤로가기 누른 횟수 계산하기 위한 변수
     ListView priceListview;
     TextView priceTextView;
     ArrayList totalList;
@@ -113,9 +114,6 @@ public class PricePageActivity extends AppCompatActivity {
                 case R.id.home_image_view:
                     startActivityM(MainActivity.class);
                     break;
-                case R.id.store_image_view:
-                    startActivityM(PricePageActivity.class);
-                    break;
                 case R.id.star_image_view:
                     startActivityM(PopularActivity.class);
                     break;
@@ -128,6 +126,22 @@ public class PricePageActivity extends AppCompatActivity {
         finish();
         startActivity(intent);
 
+    }
+    @Override
+    public void onBackPressed() {//뒤로 가기 누르면 종료
+        long curTime = System.currentTimeMillis();
+        long gapTime = curTime - backBtnTime;
+
+        if(0 <= gapTime && 2000 >= gapTime) {
+            super.onBackPressed();
+            moveTaskToBack(true);
+            android.os.Process.killProcess(android.os.Process.myPid());
+            System.exit(1);
+        }
+        else {
+            backBtnTime = curTime;
+            Toast.makeText(this, "한번 더 누르면 종료됩니다.",Toast.LENGTH_SHORT).show();
+        }
     }
     View.OnClickListener categoryListener = new View.OnClickListener() {
         @Override

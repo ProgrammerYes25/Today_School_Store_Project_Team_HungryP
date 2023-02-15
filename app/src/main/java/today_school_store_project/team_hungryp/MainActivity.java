@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView imgvPrice;
     ImageView imgvSale;
     SQLiteDatabase pDatabase;
+    ImageView newImageView, moneyOffImageView, homeImageView, storeImageView, starImageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +53,20 @@ public class MainActivity extends AppCompatActivity {
         imgvPrice.setOnClickListener(imgvListener);
         imgvSale.setOnClickListener(imgvListener);
         //List<Product> productsList = initLoadMarketDatabase();
+
+        //하단 메뉴바
+        newImageView = findViewById(R.id.new_image_view);
+        moneyOffImageView = findViewById(R.id.money_off_image_view);
+        homeImageView = findViewById(R.id.home_image_view);
+        storeImageView = findViewById(R.id.store_image_view);
+        starImageView = findViewById(R.id.star_image_view);
+
+        newImageView.setOnClickListener(menuOnClickListener);
+        moneyOffImageView.setOnClickListener(menuOnClickListener);
+        homeImageView.setOnClickListener(menuOnClickListener);
+        storeImageView.setOnClickListener(menuOnClickListener);
+        starImageView.setOnClickListener(menuOnClickListener);
+        // /하단 메뉴바
 
     }
     View.OnClickListener imgvListener = new View.OnClickListener() {
@@ -85,6 +100,49 @@ public class MainActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu_option,menu);
         return true;//super.onCreateOptionsMenu(menu);
     }
+    //하단 메뉴바
+    View.OnClickListener menuOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.new_image_view:
+                    startActivityM(NewPageActivity.class);
+                    break;
+                case R.id.money_off_image_view:
+                    startActivityM(SalePageActivity.class);
+                    break;
+                case R.id.store_image_view:
+                    startActivityM(PricePageActivity.class);
+                    break;
+                case R.id.star_image_view:
+                    startActivityM(PopularActivity.class);
+                    break;
+            }
+        }
+    };
+
+    private void startActivityM(Class activityClass){ //activity전환 메소드
+        Intent intent = new Intent(this, activityClass);
+        finish();
+        startActivity(intent);
+
+    }
+    @Override
+    public void onBackPressed() {//뒤로 가기 누르면 종료
+        long curTime = System.currentTimeMillis();
+        long gapTime = curTime - backBtnTime;
+
+        if(0 <= gapTime && 2000 >= gapTime) {
+            super.onBackPressed();
+            moveTaskToBack(true);
+            android.os.Process.killProcess(android.os.Process.myPid());
+            System.exit(1);
+        }
+        else {
+            backBtnTime = curTime;
+            Toast.makeText(this, "한번 더 누르면 종료됩니다.",Toast.LENGTH_SHORT).show();
+        }
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -114,22 +172,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onBackPressed() {//뒤로 가기 누르면 종료
-        long curTime = System.currentTimeMillis();
-        long gapTime = curTime - backBtnTime;
-
-        if(0 <= gapTime && 2000 >= gapTime) {
-            super.onBackPressed();
-            moveTaskToBack(true);
-            android.os.Process.killProcess(android.os.Process.myPid());
-            System.exit(1);
-        }
-        else {
-            backBtnTime = curTime;
-            Toast.makeText(this, "한번 더 누르면 종료됩니다.",Toast.LENGTH_SHORT).show();
-        }
-    }
 //    private List<Product> initLoadMarketDatabase(){
 //        DatabaesHelper databaesHelper = new DatabaesHelper(getApplicationContext());
 //        databaesHelper.OpenDatabaseFile();
