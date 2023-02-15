@@ -110,9 +110,6 @@ public class SalePageActivity extends AppCompatActivity {
                 case R.id.new_image_view:
                     startActivityM(NewPageActivity.class);
                     break;
-                case R.id.money_off_image_view:
-                    startActivityM(SalePageActivity.class);
-                    break;
                 case R.id.home_image_view:
                     startActivityM(MainActivity.class);
                     break;
