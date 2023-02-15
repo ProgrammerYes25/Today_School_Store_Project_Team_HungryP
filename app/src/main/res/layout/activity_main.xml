@@ -94,6 +94,7 @@
                 android:src="@drawable/group_25"/>
         </RelativeLayout>
     </LinearLayout>
+    <!--하단바 레이아웃 코드 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
