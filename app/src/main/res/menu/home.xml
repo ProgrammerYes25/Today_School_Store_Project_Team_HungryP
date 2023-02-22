@@ -1,8 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
+    <item
+        android:id="@+id/new_item"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:icon="@drawable/outline_new_releases_black_24"
+        android:title="" />
+    <item
+        android:id="@+id/money_off_item"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:icon="@drawable/outline_money_off_black_24"
+        android:title="" />
+    <item
+        android:id="@+id/home_item"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:icon="@drawable/baseline_home_black_24"
+        android:title=""/>
+    <item
+        android:id="@+id/store_item"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:icon="@drawable/outline_attach_money_black_24"
+        android:title="" />
+    <item
+        android:id="@+id/star_item"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:icon="@drawable/outline_grade_black_24"
+        android:title="" />
+
 </menu>
