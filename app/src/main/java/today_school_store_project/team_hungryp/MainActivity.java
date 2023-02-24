@@ -2,25 +2,27 @@ package today_school_store_project.team_hungryp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Process;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
-import android.widget.ViewFlipper;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+    public static Context context;
     private long backBtnTime = 0l;  //뒤로가기 누른 횟수 계산하기 위한 변수
     DatabaesHelper databaesHelper;
     SQLiteDatabase pDatabase;
-    ImageView newImageView, moneyOffImageView, homeImageView, storeImageView, starImageView;
+    Fragment mainFragment, pricePageFragment, popularFragment;
+    BottomNavigationView mainBottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +30,17 @@ public class MainActivity extends AppCompatActivity {
         setTitle("홈");
         databaesHelper = new DatabaesHelper(this);
         pDatabase = databaesHelper.getWritableDatabase();
+        context = this;
+
+        //네비게이션바 플레그먼트 정의
+        mainFragment = new MainFragment();
+        pricePageFragment = new PricePageActivity();
+        popularFragment = new PopularFragment();
+        mainBottomNavigationView = findViewById(R.id.main_bottom_navigation_view);
+
+        getSupportFragmentManager().beginTransaction().add(R.id.main_frame_layout, mainFragment).commitAllowingStateLoss();
+
+        mainBottomNavigationView.setOnNavigationItemSelectedListener( mainNavigationItemSelectedListener);
 //    private List<Product> initLoadMarketDatabase(){
 //        DatabaesHelper databaesHelper = new DatabaesHelper(getApplicationContext());
 //        databaesHelper.OpenDatabaseFile();
@@ -56,31 +69,27 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "한번 더 누르면 종료됩니다.",Toast.LENGTH_SHORT).show();
         }
     }
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.menu1:
-                Intent intenthome = new Intent(this,MainActivity.class);
-                startActivity(intenthome);
-                break;
-            case R.id.menu2:
-                Intent intentprice = new Intent(this,  PricePageActivity.class);
-                startActivity(intentprice);
-                break;
-            case R.id.menu3:
-                Intent intentpopular = new Intent(this, PopularActivity.class);
-                startActivity(intentpopular);
-                break;
-            case R.id.menu4:
-                Intent intentnew = new Intent(this, NewPageActivity.class);
-                startActivity(intentnew);
-                break;
-            case R.id.menu5:
-                Intent intentsale = new Intent(this, SalePageActivity.class);
-                startActivity(intentsale);
-                break;
-
+    BottomNavigationView.OnNavigationItemSelectedListener  mainNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()){
+//                case R.id.new_item:
+//                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, SearchPageFragment).commitAllowingStateLoss();
+//                    break;
+//                case R.id.money_off_item:
+//                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, groupNoticeFragment).commitAllowingStateLoss();
+//                    break;
+                case R.id.home_item:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, mainFragment).commitAllowingStateLoss();
+                    break;
+                case R.id.store_item:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, pricePageFragment).commitAllowingStateLoss();
+                    break;
+                case R.id.star_item:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, popularFragment).commitAllowingStateLoss();
+                    break;
+            }
+            return true;
         }
-        return super.onOptionsItemSelected(item);
-    }
+    };
 }

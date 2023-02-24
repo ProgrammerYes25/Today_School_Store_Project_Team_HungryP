@@ -1,5 +1,4 @@
 package today_school_store_project.team_hungryp;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -117,7 +115,7 @@ public class SalePageActivity extends AppCompatActivity {
                     startActivityM(PricePageActivity.class);
                     break;
                 case R.id.star_image_view:
-                    startActivityM(PopularActivity.class);
+                    startActivityM(PopularFragment.class);
                     break;
             }
         }
