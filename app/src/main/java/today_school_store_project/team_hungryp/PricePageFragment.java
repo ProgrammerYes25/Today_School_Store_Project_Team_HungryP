@@ -1,28 +1,21 @@
 package today_school_store_project.team_hungryp;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class PricePageActivity extends Fragment {
+public class PricePageFragment extends Fragment {
     ListView priceListview;
     TextView priceTextView;
     ArrayList totalList;
@@ -86,7 +79,10 @@ public class PricePageActivity extends Fragment {
             totalList.add(cursor.getString(1)+"\n 가격 : "+cursor.getInt(2)+" 원");
         }
     }
-
+    // 각각의 Fragment마다 Instance를 반환해 줄 메소드
+    public static PricePageFragment newInstance() {
+        return new PricePageFragment();
+    }
 
     View.OnClickListener categoryListener = new View.OnClickListener() {
         @Override

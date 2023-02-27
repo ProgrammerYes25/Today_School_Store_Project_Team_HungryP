@@ -3,15 +3,14 @@ package today_school_store_project.team_hungryp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Process;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -36,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         newPageFragment = new NewPageFragment();
         salePageFragment = new SalePageFragment();
         mainFragment = new MainFragment();
-        pricePageFragment = new PricePageActivity();
+        pricePageFragment = new PricePageFragment();
         popularFragment = new PopularFragment();
         mainBottomNavigationView = findViewById(R.id.main_bottom_navigation_view);
 
@@ -54,6 +53,12 @@ public class MainActivity extends AppCompatActivity {
 //        return productsList;
 //
 //    }
+    }
+    //  Fragment 내의 Fragment 전환을 위한 메소드
+    public void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.main_frame_layout, fragment).commit();      // Fragment로 사용할 MainActivity내의 layout공간을 선택합니다.
     }
     @Override
     public void onBackPressed() {//뒤로 가기 누르면 종료

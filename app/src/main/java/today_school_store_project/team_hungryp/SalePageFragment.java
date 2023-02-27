@@ -74,6 +74,11 @@ public class SalePageFragment extends Fragment {
         });
         return view;
     }
+    // 각각의 Fragment마다 Instance를 반환해 줄 메소드
+    public static SalePageFragment newInstance() {
+        return new SalePageFragment();
+    }
+
     public void setTextList(Cursor cursor){
         if(cursor.isAfterLast()){
             textList.add("현재 할인상품이 없습니다.\n업데이트를 기대해주세요");

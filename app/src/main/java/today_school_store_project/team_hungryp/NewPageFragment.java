@@ -88,6 +88,10 @@ public class NewPageFragment extends Fragment {
             textList.add(cursor.getString(1));
         }
     }
+    // 각각의 Fragment마다 Instance를 반환해 줄 메소드
+    public static NewPageFragment newInstance() {
+        return new NewPageFragment();
+    }
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        MenuInflater inflater=getMenuInflater();

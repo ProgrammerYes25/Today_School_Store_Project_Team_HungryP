@@ -8,6 +8,7 @@
     android:id="@+id/container"
     android:background="@color/white"
     tools:context=".MainActivity">
+    <!--플레그먼트 자리-->
     <FrameLayout
         android:id="@+id/main_frame_layout"
         android:layout_width="match_parent"

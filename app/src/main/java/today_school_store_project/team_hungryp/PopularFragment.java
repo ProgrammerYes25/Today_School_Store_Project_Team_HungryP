@@ -46,6 +46,8 @@ public class PopularFragment extends Fragment {
 //        setPopularList(top9Text, cursor);
         return view;
     }
-
+    public static PopularFragment newInstance() {
+        return new PopularFragment();
+    }  // 각각의 Fragment마다 Instance를 반환해 줄 메소드
 
 }
