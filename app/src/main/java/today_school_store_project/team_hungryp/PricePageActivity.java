@@ -23,7 +23,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class PricePageActivity extends Fragment {
-    Context mainActivity;
     ListView priceListview;
     TextView priceTextView;
     ArrayList totalList;
@@ -51,7 +50,6 @@ public class PricePageActivity extends Fragment {
         iceCategory = view.findViewById(R.id.ice_category);
         etcCategory = view.findViewById(R.id.etc_category);
 
-        // /하단 메뉴바
 
         drinkCategory.setOnClickListener(categoryListener);
         snackCategory.setOnClickListener(categoryListener);
@@ -88,26 +86,7 @@ public class PricePageActivity extends Fragment {
             totalList.add(cursor.getString(1)+"\n 가격 : "+cursor.getInt(2)+" 원");
         }
     }
-    //하단 메뉴바
-//    View.OnClickListener menuOnClickListener = new View.OnClickListener() {
-//        @Override
-//        public void onClick(View v) {
-//            switch (v.getId()){
-//                case R.id.new_image_view:
-//                    startActivityM(NewPageActivity.class);
-//                    break;
-//                case R.id.money_off_image_view:
-//                    startActivityM(SalePageActivity.class);
-//                    break;
-//                case R.id.home_image_view:
-//                    startActivityM(MainActivity.class);
-//                    break;
-//                case R.id.star_image_view:
-//                    startActivityM(PopularFragment.class);
-//                    break;
-//            }
-//        }
-//    };
+
 
     View.OnClickListener categoryListener = new View.OnClickListener() {
         @Override

@@ -4,16 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"
-    tools:context=".SalePageActivity">
+    tools:context=".NewPageFragment"
+    android:background="@color/white">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:padding="5dp">
+        android:padding="5dp"
+        android:layout_weight="1">
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/l"
@@ -32,8 +32,14 @@
                 android:layout_marginRight="10dp"
                 android:gravity="center"
                 android:background="@drawable/new_rectangle">
+                <ViewFlipper
+                    android:id="@+id/viewFlip2"
+                    android:layout_width="260dp"
+                    android:layout_height="260dp"
+                    android:layout_marginRight="10dp">
                 <ImageView
                     android:id="@+id/imgv1"
+                    android:src="@drawable/cider"
                     android:layout_width="260dp"
                     android:layout_height="260dp"
                     android:layout_gravity="center_vertical"
@@ -41,6 +47,27 @@
                     android:layout_marginLeft="20dp"
                     android:adjustViewBounds="true"
                     android:background="@color/white" />
+                    <ImageView
+                        android:id="@+id/imgv2"
+                        android:src="@drawable/mychu"
+                        android:layout_width="260dp"
+                        android:layout_height="260dp"
+                        android:layout_gravity="center_vertical"
+                        android:scaleType="fitXY"
+                        android:layout_marginLeft="20dp"
+                        android:adjustViewBounds="true"
+                        android:background="@color/white" />
+                    <ImageView
+                        android:id="@+id/imgv3"
+                        android:src="@drawable/jjang"
+                        android:layout_width="260dp"
+                        android:layout_height="260dp"
+                        android:layout_gravity="center_vertical"
+                        android:scaleType="fitXY"
+                        android:layout_marginLeft="20dp"
+                        android:adjustViewBounds="true"
+                        android:background="@color/white" />
+                </ViewFlipper>
                 <TextView
                     android:id="@+id/textv"
                     android:layout_width="match_parent"
@@ -51,6 +78,7 @@
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
                     android:text="피자빵"/>
+
             </LinearLayout>
             <ImageView
                 android:id="@+id/r"
@@ -65,7 +93,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
-            android:src="@drawable/sale"/>
+            android:src="@drawable/newicon"/>
     </FrameLayout>
     <!--하단바 레이아웃 코드 -->
     <LinearLayout

@@ -11,11 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Today_School_Store_Project_Team_HungryP">
         <activity
-            android:name=".SalePageActivity"
+            android:name=".SalePageFragment"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity
-            android:name=".NewPageActivity"
+            android:name=".NewPageFragment"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity

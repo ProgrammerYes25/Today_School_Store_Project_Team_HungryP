@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private long backBtnTime = 0l;  //뒤로가기 누른 횟수 계산하기 위한 변수
     DatabaesHelper databaesHelper;
     SQLiteDatabase pDatabase;
-    Fragment mainFragment, pricePageFragment, popularFragment;
+    Fragment newPageFragment, salePageFragment, mainFragment, pricePageFragment, popularFragment;
     BottomNavigationView mainBottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         context = this;
 
         //네비게이션바 플레그먼트 정의
+        newPageFragment = new NewPageFragment();
+        salePageFragment = new SalePageFragment();
         mainFragment = new MainFragment();
         pricePageFragment = new PricePageActivity();
         popularFragment = new PopularFragment();
@@ -73,19 +75,24 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()){
-//                case R.id.new_item:
-//                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, SearchPageFragment).commitAllowingStateLoss();
-//                    break;
-//                case R.id.money_off_item:
-//                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, groupNoticeFragment).commitAllowingStateLoss();
-//                    break;
+                case R.id.new_item:
+                    setTitle("신규 상품 페이지");
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, newPageFragment).commitAllowingStateLoss();
+                    break;
+                case R.id.money_off_item:
+                    setTitle("할인 상품 페이지");
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, salePageFragment).commitAllowingStateLoss();
+                    break;
                 case R.id.home_item:
+                    setTitle("홈");
                     getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, mainFragment).commitAllowingStateLoss();
                     break;
                 case R.id.store_item:
+                    setTitle("가격 페이지");
                     getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, pricePageFragment).commitAllowingStateLoss();
                     break;
                 case R.id.star_item:
+                    setTitle("인기 상품 페이지");
                     getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, popularFragment).commitAllowingStateLoss();
                     break;
             }
