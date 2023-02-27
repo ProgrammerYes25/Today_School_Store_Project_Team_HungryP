@@ -26,7 +26,7 @@ public class SalePageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //View 객체 정의
+        // 플레그먼트를 메인에 넘길 뷰 정의
         View view = inflater.inflate(R.layout.fragment_sale_page, container, false);
 //        setTitle("할인 상품 페이지");
         rbtn = view.findViewById(R.id.r);

@@ -27,7 +27,7 @@ public class NewPageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //View 객체 정의
+        // 플레그먼트를 메인에 넘길 뷰 정의
         View view = inflater.inflate(R.layout.fragment_new_page, container, false);
         ViewFlipper viewFlip2 = view.findViewById(R.id.viewFlip2);
         viewFlip2.setFlipInterval(5000);

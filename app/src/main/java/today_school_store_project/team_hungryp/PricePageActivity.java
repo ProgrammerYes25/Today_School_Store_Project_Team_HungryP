@@ -36,8 +36,8 @@ public class PricePageActivity extends Fragment {
     TextView iceCategory;
     TextView etcCategory;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // 플레그먼트를 메인에 넘길 뷰 정의
         View view = inflater.inflate(R.layout.activity_price_page, container, false);
 //        setTitle("가격 페이지");
         priceTextView = view.findViewById(R.id.price_menu_text);

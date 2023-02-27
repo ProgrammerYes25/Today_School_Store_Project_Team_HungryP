@@ -71,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "한번 더 누르면 종료됩니다.",Toast.LENGTH_SHORT).show();
         }
     }
+
+    //네비게이션 플레그먼트 전환
     BottomNavigationView.OnNavigationItemSelectedListener  mainNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {

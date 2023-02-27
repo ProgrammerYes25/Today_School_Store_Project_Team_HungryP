@@ -22,21 +22,8 @@ public class PopularFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                 Bundle savedInstanceState) {
+        // 플레그먼트를 메인에 넘길 뷰 정의
         View view = inflater.inflate(R.layout.fragment_popular, container, false);
-        //setTitle("인기 상품 페이지");
-
-        //하단 메뉴바
-//        newImageView = view.findViewById(R.id.new_image_view);
-//        moneyOffImageView = view.findViewById(R.id.money_off_image_view);
-//        homeImageView = view.findViewById(R.id.home_image_view);
-//        storeImageView = view.findViewById(R.id.store_image_view);
-//        starImageView = view.findViewById(R.id.star_image_view);
-//
-//        newImageView.setOnClickListener(menuOnClickListener);
-//        moneyOffImageView.setOnClickListener(menuOnClickListener);
-//        homeImageView.setOnClickListener(menuOnClickListener);
-//        storeImageView.setOnClickListener(menuOnClickListener);
-//        starImageView.setOnClickListener(menuOnClickListener);
 
 //        Cursor cursor;
 //        cursor = sqlDB.rawQuery("SELECT * FROM prTable WHERE pr_popular = 1;",null);
