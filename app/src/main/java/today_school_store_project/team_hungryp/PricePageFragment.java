@@ -80,7 +80,7 @@ public class PricePageFragment extends Fragment {
         }
     }
     // 각각의 Fragment마다 Instance를 반환해 줄 메소드
-    public static PricePageFragment newInstance() {
+     public static PricePageFragment newInstance() {
         return new PricePageFragment();
     }
 

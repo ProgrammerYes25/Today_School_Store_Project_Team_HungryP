@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "810116157034",
+    "project_id": "today-school-store",
+    "storage_bucket": "today-school-store.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:810116157034:android:e1c473e30d865f2fa68413",
+        "android_client_info": {
+          "package_name": "today_school_store_project.team_hungryp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "810116157034-a4f76orr3k9jb9pprhjgsdbr7ev8921v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALKFsUwg8FARK5mLO2XPXcRXANVz2_G-M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "810116157034-a4f76orr3k9jb9pprhjgsdbr7ev8921v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
