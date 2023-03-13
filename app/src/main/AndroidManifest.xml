@@ -3,6 +3,7 @@
     package="today_school_store_project.team_hungryp">
     <uses-permission android:name="android.permission.ACCESS_CHECKIN_PROPERTIES "
         android:maxSdkVersion="32"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,14 +11,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Today_School_Store_Project_Team_HungryP">
-        <activity
-            android:name=".SalePageFragment"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity
-            android:name=".NewPageFragment"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
