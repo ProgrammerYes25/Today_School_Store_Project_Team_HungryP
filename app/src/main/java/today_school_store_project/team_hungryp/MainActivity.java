@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private long backBtnTime = 0l;  //뒤로가기 누른 횟수 계산하기 위한 변수
     DatabaesHelper databaesHelper;
     SQLiteDatabase pDatabase;
+    FragmentTransaction fragmentTransaction;
     Fragment newPageFragment, salePageFragment, mainFragment, pricePageFragment, popularFragment;
     BottomNavigationView mainBottomNavigationView;
     @Override
@@ -39,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
         popularFragment = new PopularFragment();
         mainBottomNavigationView = findViewById(R.id.main_bottom_navigation_view);
 
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+
         getSupportFragmentManager().beginTransaction().add(R.id.main_frame_layout, mainFragment).commitAllowingStateLoss();
 
         mainBottomNavigationView.setOnNavigationItemSelectedListener( mainNavigationItemSelectedListener);
@@ -56,8 +60,6 @@ public class MainActivity extends AppCompatActivity {
     }
     //  Fragment 내의 Fragment 전환을 위한 메소드
     public void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.main_frame_layout, fragment).commit();      // Fragment로 사용할 MainActivity내의 layout공간을 선택합니다.
     }
     @Override
@@ -84,23 +86,23 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()){
                 case R.id.new_item:
                     setTitle("신규 상품 페이지");
-                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, newPageFragment).commitAllowingStateLoss();
+                    fragmentTransaction.replace(R.id.main_frame_layout, newPageFragment).commitAllowingStateLoss();
                     break;
                 case R.id.money_off_item:
                     setTitle("할인 상품 페이지");
-                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, salePageFragment).commitAllowingStateLoss();
+                    fragmentTransaction.replace(R.id.main_frame_layout, salePageFragment).commitAllowingStateLoss();
                     break;
                 case R.id.home_item:
                     setTitle("홈");
-                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, mainFragment).commitAllowingStateLoss();
+                    fragmentTransaction.replace(R.id.main_frame_layout, mainFragment).commitAllowingStateLoss();
                     break;
                 case R.id.store_item:
                     setTitle("가격 페이지");
-                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, pricePageFragment).commitAllowingStateLoss();
+                    fragmentTransaction.replace(R.id.main_frame_layout, pricePageFragment).commitAllowingStateLoss();
                     break;
                 case R.id.star_item:
                     setTitle("인기 상품 페이지");
-                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, popularFragment).commitAllowingStateLoss();
+                    fragmentTransaction.replace(R.id.main_frame_layout, popularFragment).commitAllowingStateLoss();
                     break;
             }
             return true;
