@@ -42,6 +42,9 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.3.5'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.google.firebase:firebase-database:20.0.4'//Circle ImageView
+    implementation 'com.google.firebase:firebase-database:20.0.4'
+    implementation 'de.hdodenhof:circleimageview:3.1.0' //Circle ImageView
+    implementation 'com.google.firebase:firebase-admin:1.32.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

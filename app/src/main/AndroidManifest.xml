@@ -3,6 +3,7 @@
     package="today_school_store_project.team_hungryp">
     <uses-permission android:name="android.permission.ACCESS_CHECKIN_PROPERTIES "
         android:maxSdkVersion="32"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
