@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setTitle("홈");
         databaesHelper = new DatabaesHelper(this);
-        pDatabase = databaesHelper.getWritableDatabase();
+//        pDatabase = databaesHelper.getWritableDatabase();
         context = this;
 
         //네비게이션바 플레그먼트 정의
