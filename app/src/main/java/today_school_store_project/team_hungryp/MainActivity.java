@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     }
     //  Fragment 내의 Fragment 전환을 위한 메소드
     public void replaceFragment(Fragment fragment) {
-        fragmentTransaction.replace(R.id.main_frame_layout, fragment).commit();      // Fragment로 사용할 MainActivity내의 layout공간을 선택합니다.
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, fragment).commitAllowingStateLoss();      // Fragment로 사용할 MainActivity내의 layout공간을 선택합니다.
     }
     @Override
     public void onBackPressed() {//뒤로 가기 누르면 종료
@@ -86,23 +86,23 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()){
                 case R.id.new_item:
                     setTitle("신규 상품 페이지");
-                    fragmentTransaction.replace(R.id.main_frame_layout, newPageFragment).commitAllowingStateLoss();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, newPageFragment).commitAllowingStateLoss();
                     break;
                 case R.id.money_off_item:
                     setTitle("할인 상품 페이지");
-                    fragmentTransaction.replace(R.id.main_frame_layout, salePageFragment).commitAllowingStateLoss();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, salePageFragment).commitAllowingStateLoss();
                     break;
                 case R.id.home_item:
                     setTitle("홈");
-                    fragmentTransaction.replace(R.id.main_frame_layout, mainFragment).commitAllowingStateLoss();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, mainFragment).commitAllowingStateLoss();
                     break;
                 case R.id.store_item:
                     setTitle("가격 페이지");
-                    fragmentTransaction.replace(R.id.main_frame_layout, pricePageFragment).commitAllowingStateLoss();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, pricePageFragment).commitAllowingStateLoss();
                     break;
                 case R.id.star_item:
                     setTitle("인기 상품 페이지");
-                    fragmentTransaction.replace(R.id.main_frame_layout, popularFragment).commitAllowingStateLoss();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, popularFragment).commitAllowingStateLoss();
                     break;
             }
             return true;

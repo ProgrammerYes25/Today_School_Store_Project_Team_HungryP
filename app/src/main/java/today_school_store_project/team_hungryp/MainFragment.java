@@ -86,7 +86,6 @@ public class MainFragment extends Fragment {
 
         }
     };
-
 }
 //    View.OnClickListener imgvListener = new View.OnClickListener() {
 //        @Override

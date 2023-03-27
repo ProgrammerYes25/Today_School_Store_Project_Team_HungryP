@@ -60,11 +60,11 @@ public class PricePageFragment extends Fragment {
         iceCategory.setOnClickListener(categoryListener);
         etcCategory.setOnClickListener(categoryListener);
         databaesHelper = new DatabaesHelper(MainActivity.context);
-        sqlDB = databaesHelper.getReadableDatabase();
+        //sqlDB = databaesHelper.getReadableDatabase();
         Cursor cursor;
-        cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=\"음료류\";", null);
+//        cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=\"음료류\";", null);
         totalList = new ArrayList();
-        setTotalList(cursor);
+        //setTotalList(cursor);
 
         adapter = new ArrayAdapter<String>(MainActivity.context, android.R.layout.simple_list_item_1, totalList) {
             @Override
@@ -135,8 +135,8 @@ public class PricePageFragment extends Fragment {
 
         }
     };
-    public static NewPageFragment newInstance() {
-        return new NewPageFragment();
+    public static PricePageFragment newInstance() {
+        return new PricePageFragment();
     }
 
 //    @Override

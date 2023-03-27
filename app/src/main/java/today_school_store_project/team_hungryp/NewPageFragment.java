@@ -43,14 +43,15 @@ public class NewPageFragment extends Fragment {
 
 
         databaesHelper = new DatabaesHelper(MainActivity.context);
-        sqlDB = databaesHelper.getReadableDatabase();
-        Cursor cursor;
-        cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_new = 1;",null);
-        textList = new ArrayList<String>();
-        setTextList(cursor);
-        imgV1.setImageResource(food[foodi]);
-        textvi.setText(textList.get(foodi));
-        rbtn.setOnClickListener(new View.OnClickListener() {
+        // sqlDB = databaesHelper.getReadableDatabase();
+        //Cursor cursor;
+        //cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_new = 1;",null);
+        //textList = new ArrayList<String>();
+        //setTextList(cursor);
+        //imgV1.setImageResource(food[foodi]);
+        //textvi.setText(textList.get(foodi));
+        rbtn.setOnClickListener(new View.
+                OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(textList.get(0).equals("현재 할인상품이 없습니다.\n업데이트를 기대해주세요" )){

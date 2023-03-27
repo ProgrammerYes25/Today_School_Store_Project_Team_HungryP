@@ -128,7 +128,8 @@
             <ListView
                 android:id="@+id/price_listview"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"></ListView>
+                android:layout_height="match_parent">
+            </ListView>
         </LinearLayout>
     </LinearLayout>
     <!--하단바 레이아웃 코드 -->
