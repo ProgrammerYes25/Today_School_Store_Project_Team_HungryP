@@ -107,8 +107,12 @@ public class PricePageFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                   String names = dataSnapshot.child("pr_name").getValue(String.class);
-                   totalList.add(names);
+                   String name = dataSnapshot.child("pr_name").getValue(String.class);
+                   String price = dataSnapshot.child("pr_price").getValue(Integer.class).toString();
+                   if(price.equals(null)){
+                       continue;
+                   }
+                   totalList.add(name+"\n 가격 : "+price+" 원");
                 }
                 adapter.notifyDataSetChanged();
             }
