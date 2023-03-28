@@ -1,5 +1,6 @@
 package today_school_store_project.team_hungryp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -20,15 +21,29 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.auth.User;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class PricePageFragment extends Fragment {
     ListView priceListview;
     TextView priceTextView;
-    ArrayList totalList;
+    List totalList;
     ArrayAdapter<String> adapter;
-    DatabaesHelper databaesHelper;
-    SQLiteDatabase sqlDB;
+    // SQLite
+//    DatabaesHelper databaesHelper;
+//    SQLiteDatabase sqlDB;
+    // !SQLite
+    //Firebase Database
+    FirebaseDatabase database;
+    DatabaseReference databaseReference;
+
     TextView drinkCategory;
     TextView snackCategory;
     TextView candyCategory;
@@ -59,16 +74,24 @@ public class PricePageFragment extends Fragment {
         icecreamCategory.setOnClickListener(categoryListener);
         iceCategory.setOnClickListener(categoryListener);
         etcCategory.setOnClickListener(categoryListener);
-        databaesHelper = new DatabaesHelper(MainActivity.context);
-        //sqlDB = databaesHelper.getReadableDatabase();
-        Cursor cursor;
+
+
+        // SQLite
+//        databaesHelper = new DatabaesHelper(MainActivity.context);
+//        sqlDB = databaesHelper.getReadableDatabase();
+//        Cursor cursor;
 //        cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=\"음료류\";", null);
-        totalList = new ArrayList();
-        //setTotalList(cursor);
+//        totalList = new ArrayList();
+//        setTotalList(cursor);
+        // !SQLite
+
+        //Firebase Database
+        totalList = new ArrayList<>();
 
         adapter = new ArrayAdapter<String>(MainActivity.context, android.R.layout.simple_list_item_1, totalList) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
+                // 리스트 뷰 커스텀
                 View view = super.getView(position, convertView, parent);
                 TextView tv = view.findViewById(android.R.id.text1);
                 tv.setTextColor(Color.BLACK);
@@ -78,6 +101,24 @@ public class PricePageFragment extends Fragment {
             }
         };
         priceListview.setAdapter(adapter);
+        database = MainActivity.databaseHelper.getDatabase();
+        databaseReference = database.getReference("__collections__");
+        databaseReference.child("PR_TABLE").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                   String names = dataSnapshot.child("pr_name").getValue(String.class);
+                   totalList.add(names);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         return view;
     }
     public void setTotalList(Cursor cursor){
@@ -94,44 +135,44 @@ public class PricePageFragment extends Fragment {
         @Override
         public void onClick(View v) {
             Cursor cursor;
-            switch (v.getId()) {
-                case R.id.drink_category:
-                    priceTextView.setText(drinkCategory.getText());
-                    cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=\"음료류\";", null);
-                    setTotalList(cursor);
-                    adapter.notifyDataSetChanged();
-                    break;
-                case R.id.snack_category:
-                    priceTextView.setText(snackCategory.getText());
-                    cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=\"과자류\";", null);
-                    setTotalList(cursor);
-                    adapter.notifyDataSetChanged();
-                    break;
-                case R.id.candy_category:
-                    priceTextView.setText(candyCategory.getText());
-                    cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=\"사탕젤리류\";", null);
-                    setTotalList(cursor);
-                    adapter.notifyDataSetChanged();
-                    break;
-                case R.id.icecream_category:
-                    priceTextView.setText(icecreamCategory.getText());
-                    cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=\"아이스크림류\";", null);
-                    setTotalList(cursor);
-                    adapter.notifyDataSetChanged();
-                    break;
-                case R.id.ice_category:
-                    priceTextView.setText(iceCategory.getText());
-                    cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=\"냉동식품\";", null);
-                    setTotalList(cursor);
-                    adapter.notifyDataSetChanged();
-                    break;
-                case R.id.etc_category:
-                    priceTextView.setText(etcCategory.getText());
-                    cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=\"기타잡화\";", null);
-                    setTotalList(cursor);
-                    adapter.notifyDataSetChanged();
-                    break;
-            }
+//            switch (v.getId()) {
+//                case R.id.drink_category:
+//                    priceTextView.setText(drinkCategory.getText());
+//                    cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=\"음료류\";", null);
+//                    setTotalList(cursor);
+//                    adapter.notifyDataSetChanged();
+//                    break;
+//                case R.id.snack_category:
+//                    priceTextView.setText(snackCategory.getText());
+//                    cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=\"과자류\";", null);
+//                    setTotalList(cursor);
+//                    adapter.notifyDataSetChanged();
+//                    break;
+//                case R.id.candy_category:
+//                    priceTextView.setText(candyCategory.getText());
+//                    cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=\"사탕젤리류\";", null);
+//                    setTotalList(cursor);
+//                    adapter.notifyDataSetChanged();
+//                    break;
+//                case R.id.icecream_category:
+//                    priceTextView.setText(icecreamCategory.getText());
+//                    cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=\"아이스크림류\";", null);
+//                    setTotalList(cursor);
+//                    adapter.notifyDataSetChanged();
+//                    break;
+//                case R.id.ice_category:
+//                    priceTextView.setText(iceCategory.getText());
+//                    cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=\"냉동식품\";", null);
+//                    setTotalList(cursor);
+//                    adapter.notifyDataSetChanged();
+//                    break;
+//                case R.id.etc_category:
+//                    priceTextView.setText(etcCategory.getText());
+//                    cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_category=\"기타잡화\";", null);
+//                    setTotalList(cursor);
+//                    adapter.notifyDataSetChanged();
+//                    break;
+//            }
 
         }
     };

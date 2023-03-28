@@ -3,33 +3,45 @@ package today_school_store_project.team_hungryp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
+//import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Process;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.FirebaseException;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
     public static Context context;
     private long backBtnTime = 0l;  //뒤로가기 누른 횟수 계산하기 위한 변수
-    DatabaesHelper databaesHelper;
-    SQLiteDatabase pDatabase;
-    FragmentTransaction fragmentTransaction;
+
+    //SQLite
+//    DatabaesHelper databaesHelper;
+//    SQLiteDatabase pDatabase;
+    //!SQLite
     Fragment newPageFragment, salePageFragment, mainFragment, pricePageFragment, popularFragment;
     BottomNavigationView mainBottomNavigationView;
+
+    // Firebase Database
+    static FirebaseDatabaseHelper databaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("홈");
-        databaesHelper = new DatabaesHelper(this);
+        //SQLite
+//        databaesHelper = new DatabaesHelper(this);
 //        pDatabase = databaesHelper.getWritableDatabase();
+        //!SQLite
+
+        // Firebase Database
+        databaseHelper = new FirebaseDatabaseHelper();
+        FirebaseDatabase database = databaseHelper.getDatabase();
+
         context = this;
 
         //네비게이션바 플레그먼트 정의
@@ -40,30 +52,23 @@ public class MainActivity extends AppCompatActivity {
         popularFragment = new PopularFragment();
         mainBottomNavigationView = findViewById(R.id.main_bottom_navigation_view);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
 
         getSupportFragmentManager().beginTransaction().add(R.id.main_frame_layout, mainFragment).commitAllowingStateLoss();
 
         mainBottomNavigationView.setOnNavigationItemSelectedListener( mainNavigationItemSelectedListener);
-//    private List<Product> initLoadMarketDatabase(){
-//        DatabaesHelper databaesHelper = new DatabaesHelper(getApplicationContext());
-//        databaesHelper.OpenDatabaseFile();
-//        setContentView(R.layout.loading_page);
-//        List<Product> productsList = databaesHelper.getTableData();
-//        Log.e("test", String.valueOf(productsList.size()));
-//        setContentView(R.layout.activity_main);
-//        //databaesHelper.close();
-//        return productsList;
-//
-//    }
     }
-    //  Fragment 내의 Fragment 전환을 위한 메소드
+    static FirebaseDatabaseHelper getDatabaseHelper (){
+        return databaseHelper;
+    }
+
+    //  Fragment 내의 Fragment 전환을 위한 메소드(버튼을 이용한 전환)
     public void replaceFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, fragment).commitAllowingStateLoss();      // Fragment로 사용할 MainActivity내의 layout공간을 선택합니다.
     }
+
+    //뒤로 가기 누르면 종료
     @Override
-    public void onBackPressed() {//뒤로 가기 누르면 종료
+    public void onBackPressed() {
         long curTime = System.currentTimeMillis();
         long gapTime = curTime - backBtnTime;
 
