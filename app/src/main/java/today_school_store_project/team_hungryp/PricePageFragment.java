@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -119,7 +120,6 @@ public class PricePageFragment extends Fragment {
             int prNo = position+catecoryNum;
             Query databaseQuery = databaseReference.child("pr_table").orderByChild("pr_no").equalTo(prNo);
             setDatabaseDialogQuery(databaseQuery);
-            Toast.makeText(MainActivity.context.getApplicationContext(), position+"입니다.",Toast.LENGTH_SHORT).show();
         }
     };
 
@@ -136,7 +136,6 @@ public class PricePageFragment extends Fragment {
                 }
                 adapter.notifyDataSetChanged();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -148,13 +147,15 @@ public class PricePageFragment extends Fragment {
         databaseQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                totalList.clear();
+                Log.d("확인", snapshot+"확인");
+                String name="이름", price="가격";
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    String name = dataSnapshot.child("pr_name").getValue(String.class);
-                    String price = dataSnapshot.child("pr_price").getValue(Integer.class).toString();
-                    totalList.add(name+"\n 가격 : "+price+" 원");
+                    name = dataSnapshot.child("pr_name").getValue(String.class);
+                    price = dataSnapshot.child("pr_price").getValue(Integer.class).toString();
                 }
-                adapter.notifyDataSetChanged();
+                Log.d("확인", name+" + "+price);
+                DialogClass dlg = new DialogClass(MainActivity.context, name, price);
+                dlg.show();
             }
 
             @Override
