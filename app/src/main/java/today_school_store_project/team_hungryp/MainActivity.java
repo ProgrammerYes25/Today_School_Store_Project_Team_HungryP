@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Firebase Database
     static FirebaseDatabaseHelper databaseHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

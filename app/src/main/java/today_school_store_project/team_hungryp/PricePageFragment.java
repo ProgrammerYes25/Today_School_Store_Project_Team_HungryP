@@ -46,7 +46,7 @@ public class PricePageFragment extends Fragment {
     //Firebase Database
     FirebaseDatabase database;
     DatabaseReference databaseReference;
-
+    int catecoryNum;
     TextView drinkCategory;
     TextView snackCategory;
     TextView candyCategory;
@@ -90,7 +90,7 @@ public class PricePageFragment extends Fragment {
 
         //Firebase Database
         totalList = new ArrayList<>();
-
+        catecoryNum = 101;
         adapter = new ArrayAdapter<String>(MainActivity.context, android.R.layout.simple_list_item_1, totalList) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
@@ -104,9 +104,10 @@ public class PricePageFragment extends Fragment {
             }
         };
         priceListview.setAdapter(adapter);
+        priceListview.setOnItemClickListener(onItemClickListener);
         database = MainActivity.databaseHelper.getDatabase();
-        databaseReference = database.getReference("__collections__");
-        Query databaseQuery = databaseReference.child("PR_TABLE").orderByChild("pr_category").equalTo("음료류");
+        databaseReference = database.getReference("products");
+        Query databaseQuery = databaseReference.child("pr_table").orderByChild("pr_category").equalTo("음료류");
         setDatabaseQuery(databaseQuery);
 
         return view;
@@ -115,7 +116,10 @@ public class PricePageFragment extends Fragment {
     AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+            int prNo = position+catecoryNum;
+            Query databaseQuery = databaseReference.child("pr_table").orderByChild("pr_no").equalTo(prNo);
+            setDatabaseDialogQuery(databaseQuery);
+            Toast.makeText(MainActivity.context.getApplicationContext(), position+"입니다.",Toast.LENGTH_SHORT).show();
         }
     };
 
@@ -139,6 +143,26 @@ public class PricePageFragment extends Fragment {
             }
         });
     }
+
+    public void setDatabaseDialogQuery(Query databaseQuery){
+        databaseQuery.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                totalList.clear();
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    String name = dataSnapshot.child("pr_name").getValue(String.class);
+                    String price = dataSnapshot.child("pr_price").getValue(Integer.class).toString();
+                    totalList.add(name+"\n 가격 : "+price+" 원");
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 //  category 별로 나누어 List 보기 위한 Listener
     View.OnClickListener categoryListener = new View.OnClickListener() {
         @Override
@@ -146,33 +170,39 @@ public class PricePageFragment extends Fragment {
             Query databaseQuery;
             switch (v.getId()) {
                 case R.id.drink_category:
+                    catecoryNum = 101;
                     priceTextView.setText(drinkCategory.getText());
-                    databaseQuery = databaseReference.child("PR_TABLE").orderByChild("pr_category").equalTo("음료류");
+                    databaseQuery = databaseReference.child("pr_table").orderByChild("pr_category").equalTo("음료류");
                     setDatabaseQuery(databaseQuery);
                     break;
                 case R.id.snack_category:
+                    catecoryNum = 501;
                     priceTextView.setText(snackCategory.getText());
-                    databaseQuery = databaseReference.child("PR_TABLE").orderByChild("pr_category").equalTo("과자류");
+                    databaseQuery = databaseReference.child("pr_table").orderByChild("pr_category").equalTo("과자류");
                     setDatabaseQuery(databaseQuery);
                     break;
                 case R.id.candy_category:
+                    catecoryNum = 301;
                     priceTextView.setText(candyCategory.getText());
-                    databaseQuery = databaseReference.child("PR_TABLE").orderByChild("pr_category").equalTo("사탕젤리류");
+                    databaseQuery = databaseReference.child("pr_table").orderByChild("pr_category").equalTo("사탕젤리류");
                     setDatabaseQuery(databaseQuery);
                     break;
                 case R.id.icecream_category:
+                    catecoryNum = 201;
                     priceTextView.setText(icecreamCategory.getText());
-                    databaseQuery = databaseReference.child("PR_TABLE").orderByChild("pr_category").equalTo("아이스크림류");
+                    databaseQuery = databaseReference.child("pr_table").orderByChild("pr_category").equalTo("아이스크림류");
                     setDatabaseQuery(databaseQuery);
                     break;
                 case R.id.ice_category:
+                    catecoryNum = 401;
                     priceTextView.setText(iceCategory.getText());
-                    databaseQuery = databaseReference.child("PR_TABLE").orderByChild("pr_category").equalTo("냉동식품");
+                    databaseQuery = databaseReference.child("pr_table").orderByChild("pr_category").equalTo("냉동식품");
                     setDatabaseQuery(databaseQuery);
                     break;
                 case R.id.etc_category:
+                    catecoryNum = 601;
                     priceTextView.setText(etcCategory.getText());
-                    databaseQuery = databaseReference.child("PR_TABLE").orderByChild("pr_category").equalTo("기타잡화");
+                    databaseQuery = databaseReference.child("pr_table").orderByChild("pr_category").equalTo("기타잡화");
                     setDatabaseQuery(databaseQuery);
                     break;
             }
