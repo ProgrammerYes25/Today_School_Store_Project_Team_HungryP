@@ -40,6 +40,9 @@ public class PricePageFragment extends Fragment {
     TextView priceTextView;
     List totalList;
     ArrayAdapter<String> adapter;
+    final int makeList = 0;
+    final int makeDialog = 1;
+    final int addTouch = 2;
     // SQLite
 //    DatabaesHelper databaesHelper;
 //    SQLiteDatabase sqlDB;
@@ -109,8 +112,7 @@ public class PricePageFragment extends Fragment {
         database = MainActivity.databaseHelper.getDatabase();
         databaseReference = database.getReference("products");
         Query databaseQuery = databaseReference.child("pr_table").orderByChild("pr_category").equalTo("음료류");
-        setDatabaseQuery(databaseQuery);
-
+        setDatabaseQuery(databaseQuery, makeList);
         return view;
     }
 
@@ -119,50 +121,77 @@ public class PricePageFragment extends Fragment {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             int prNo = position+catecoryNum;
             Query databaseQuery = databaseReference.child("pr_table").orderByChild("pr_no").equalTo(prNo);
-            setDatabaseDialogQuery(databaseQuery);
+            setDatabaseQuery(databaseQuery, addTouch);
+            setDatabaseQuery(databaseQuery, makeDialog);
         }
     };
 
-    // Database에서 Qurey를 이용하여 data 가져와서 ListView에 넣기
-    public void setDatabaseQuery(Query databaseQuery){
-        databaseQuery.addValueEventListener(new ValueEventListener() {
-                @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    totalList.clear();
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    String name = dataSnapshot.child("pr_name").getValue(String.class);
-                    String price = dataSnapshot.child("pr_price").getValue(Integer.class).toString();
-                    totalList.add(name+"\n 가격 : "+price+" 원");
-                }
-                adapter.notifyDataSetChanged();
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
-    }
+    public void setDatabaseQuery(Query databaseQuery, int databaseInt){
+        switch (databaseInt){
+            case makeList:
+                // Database에서 Qurey를 이용하여 data 가져와서 ListView에 넣기
+                databaseQuery.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        totalList.clear();
+                        for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            String name = dataSnapshot.child("pr_name").getValue(String.class);
+                            String price = dataSnapshot.child("pr_price").getValue(Integer.class).toString();
+                            totalList.add(name+"\n 가격 : "+price+" 원");
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.e("error : ", String.valueOf(error));
+                    }
+                });
+                break;
+            case makeDialog:
+                // Dialog에 데이터 가져와서 넣는 코드
+                databaseQuery.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        Log.d("확인", snapshot+"확인");
+                        String name="이름", price="가격";
+                        for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            name = dataSnapshot.child("pr_name").getValue(String.class);
+                            price = dataSnapshot.child("pr_price").getValue(Integer.class).toString();
+                        }
+                        Log.d("확인", name+" + "+price);
+                        DialogClass dlg = new DialogClass(MainActivity.context, name, price);
+                        dlg.show();
+                    }
 
-    public void setDatabaseDialogQuery(Query databaseQuery){
-        databaseQuery.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Log.d("확인", snapshot+"확인");
-                String name="이름", price="가격";
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    name = dataSnapshot.child("pr_name").getValue(String.class);
-                    price = dataSnapshot.child("pr_price").getValue(Integer.class).toString();
-                }
-                Log.d("확인", name+" + "+price);
-                DialogClass dlg = new DialogClass(MainActivity.context, name, price);
-                dlg.show();
-            }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.e("error : ", String.valueOf(error));
+                    }
+                });
+                break;
+            case addTouch:
+                databaseQuery.addValueEventListener(new ValueEventListener() {
+                    @Override
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String newPrPopular, prPopular = "0", prNo = "0";
+                        for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            prPopular = dataSnapshot.child("pr_popular").getValue(Long.class).toString();
+                            newPrPopular = Integer.toString(Integer.parseInt(prPopular)+1);
+                            prNo = dataSnapshot.child("pr_no").getValue(Long.class).toString();
+                           // databaseReference.child("pr_no").child(prNo).child("pr_popular").setValue(newPrPopular);
+                        }
+                    }
 
-            }
-        });
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.e("error : ", String.valueOf(error));
+                    }
+                });
+                break;
+        }
+
     }
 //  category 별로 나누어 List 보기 위한 Listener
     View.OnClickListener categoryListener = new View.OnClickListener() {
@@ -174,37 +203,37 @@ public class PricePageFragment extends Fragment {
                     catecoryNum = 101;
                     priceTextView.setText(drinkCategory.getText());
                     databaseQuery = databaseReference.child("pr_table").orderByChild("pr_category").equalTo("음료류");
-                    setDatabaseQuery(databaseQuery);
+                    setDatabaseQuery(databaseQuery, makeList);
                     break;
                 case R.id.snack_category:
                     catecoryNum = 501;
                     priceTextView.setText(snackCategory.getText());
                     databaseQuery = databaseReference.child("pr_table").orderByChild("pr_category").equalTo("과자류");
-                    setDatabaseQuery(databaseQuery);
+                    setDatabaseQuery(databaseQuery, makeList);
                     break;
                 case R.id.candy_category:
                     catecoryNum = 301;
                     priceTextView.setText(candyCategory.getText());
                     databaseQuery = databaseReference.child("pr_table").orderByChild("pr_category").equalTo("사탕젤리류");
-                    setDatabaseQuery(databaseQuery);
+                    setDatabaseQuery(databaseQuery, makeList);
                     break;
                 case R.id.icecream_category:
                     catecoryNum = 201;
                     priceTextView.setText(icecreamCategory.getText());
                     databaseQuery = databaseReference.child("pr_table").orderByChild("pr_category").equalTo("아이스크림류");
-                    setDatabaseQuery(databaseQuery);
+                    setDatabaseQuery(databaseQuery, makeList);
                     break;
                 case R.id.ice_category:
                     catecoryNum = 401;
                     priceTextView.setText(iceCategory.getText());
                     databaseQuery = databaseReference.child("pr_table").orderByChild("pr_category").equalTo("냉동식품");
-                    setDatabaseQuery(databaseQuery);
+                    setDatabaseQuery(databaseQuery, makeList);
                     break;
                 case R.id.etc_category:
                     catecoryNum = 601;
                     priceTextView.setText(etcCategory.getText());
                     databaseQuery = databaseReference.child("pr_table").orderByChild("pr_category").equalTo("기타잡화");
-                    setDatabaseQuery(databaseQuery);
+                    setDatabaseQuery(databaseQuery, makeList);
                     break;
             }
 
