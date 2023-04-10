@@ -53,7 +53,8 @@ public class PricePageFragment extends Fragment {
     //Firebase Database
     FirebaseDatabase database;
     DatabaseReference databaseReference;
-    int catecoryNum, no;
+    int catecoryNum, no, popular;
+    Map<String, Object> prMap;
     TextView drinkCategory;
     TextView snackCategory;
     TextView candyCategory;
@@ -96,6 +97,7 @@ public class PricePageFragment extends Fragment {
         // !SQLite
 
         //Firebase Database
+        prMap = new HashMap<>();
         totalList = new ArrayList<>();
         catecoryNum = 101;
         adapter = new ArrayAdapter<String>(MainActivity.context, android.R.layout.simple_list_item_1, totalList) {
@@ -126,7 +128,8 @@ public class PricePageFragment extends Fragment {
             no = position;
             Query databaseQuery = databaseReference.orderByChild("pr_no").equalTo(prNo);
             setDatabaseQuery(databaseQuery, makeDialog);
-            Log.d("확인 : ","다시 돌아왔다.");
+            //Log.d("확인 : ","다시 돌아왔다.");
+            databaseReference.child(String.valueOf(no)).child("pr_popular").setValue(popular);
         }
     };
 
@@ -157,23 +160,27 @@ public class PricePageFragment extends Fragment {
                 databaseQuery.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                         Log.d("확인", snapshot+"확인");
                         String name="이름", price="가격";
-                        int prPopular = 0, newPrPopular = 0;
+                        Integer prPopular = null, prPrice = null;
+                        Integer newPrPopular = null;
 //                        DatabaseReference dr= database.getReference("pr_table").getDatabase().getReference(String.valueOf(no)).getDatabase().getReference("pr_popular");
-
                         Log.d("레퍼런스확인 : ", databaseReference+"");
                         for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
                             name = dataSnapshot.child("pr_name").getValue(String.class);
-                            price = dataSnapshot.child("pr_price").getValue(Integer.class).toString();
-                            prPopular = Integer.parseInt(dataSnapshot.child("pr_popular").getValue(Integer.class).toString());
+                            prPrice = dataSnapshot.child("pr_price").getValue(Integer.class);
+                            price = prPrice.toString();
+                            prPopular = dataSnapshot.child("pr_popular").getValue(Integer.class);
                         }
-                        Log.d("확인", name+" + "+price);
+                        Log.d("확인", name+" + "+price+" + "+prPopular);
                         DialogClass dlg = new DialogClass(MainActivity.context, name, price);
                         dlg.show();
-                        newPrPopular = prPopular+1;
+                        int i=Integer.parseInt(String.valueOf(prPopular+1));
+                        newPrPopular = Integer.valueOf(i);
                         Log.d("값 확인 : ", newPrPopular+"개");
-                        databaseReference.setValue("pr_popular", Integer.valueOf(newPrPopular).toString());
+                        popular = newPrPopular;
+//                        databaseReference.child(String.valueOf(no)).updateChildren(prMap);
                     }
 
                     @Override
@@ -208,6 +215,8 @@ public class PricePageFragment extends Fragment {
         }
 
     }
+
+
 //  category 별로 나누어 List 보기 위한 Listener
     View.OnClickListener categoryListener = new View.OnClickListener() {
         @Override
