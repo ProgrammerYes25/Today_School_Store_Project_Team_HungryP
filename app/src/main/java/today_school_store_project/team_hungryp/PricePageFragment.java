@@ -32,7 +32,10 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.auth.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Queue;
 
 public class PricePageFragment extends Fragment {
@@ -50,7 +53,7 @@ public class PricePageFragment extends Fragment {
     //Firebase Database
     FirebaseDatabase database;
     DatabaseReference databaseReference;
-    int catecoryNum;
+    int catecoryNum, no;
     TextView drinkCategory;
     TextView snackCategory;
     TextView candyCategory;
@@ -110,8 +113,8 @@ public class PricePageFragment extends Fragment {
         priceListview.setAdapter(adapter);
         priceListview.setOnItemClickListener(onItemClickListener);
         database = MainActivity.databaseHelper.getDatabase();
-        databaseReference = database.getReference("products");
-        Query databaseQuery = databaseReference.child("pr_table").orderByChild("pr_category").equalTo("음료류");
+        databaseReference = database.getReference("pr_table");
+        Query databaseQuery = databaseReference.orderByChild("pr_category").equalTo("음료류");
         setDatabaseQuery(databaseQuery, makeList);
         return view;
     }
@@ -120,9 +123,10 @@ public class PricePageFragment extends Fragment {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             int prNo = position+catecoryNum;
-            Query databaseQuery = databaseReference.child("pr_table").orderByChild("pr_no").equalTo(prNo);
-            setDatabaseQuery(databaseQuery, addTouch);
+            no = position;
+            Query databaseQuery = databaseReference.orderByChild("pr_no").equalTo(prNo);
             setDatabaseQuery(databaseQuery, makeDialog);
+            Log.d("확인 : ","다시 돌아왔다.");
         }
     };
 
@@ -155,13 +159,21 @@ public class PricePageFragment extends Fragment {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         Log.d("확인", snapshot+"확인");
                         String name="이름", price="가격";
+                        int prPopular = 0, newPrPopular = 0;
+//                        DatabaseReference dr= database.getReference("pr_table").getDatabase().getReference(String.valueOf(no)).getDatabase().getReference("pr_popular");
+
+                        Log.d("레퍼런스확인 : ", databaseReference+"");
                         for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
                             name = dataSnapshot.child("pr_name").getValue(String.class);
                             price = dataSnapshot.child("pr_price").getValue(Integer.class).toString();
+                            prPopular = Integer.parseInt(dataSnapshot.child("pr_popular").getValue(Integer.class).toString());
                         }
                         Log.d("확인", name+" + "+price);
                         DialogClass dlg = new DialogClass(MainActivity.context, name, price);
                         dlg.show();
+                        newPrPopular = prPopular+1;
+                        Log.d("값 확인 : ", newPrPopular+"개");
+                        databaseReference.setValue("pr_popular", Integer.valueOf(newPrPopular).toString());
                     }
 
                     @Override
@@ -169,27 +181,30 @@ public class PricePageFragment extends Fragment {
                         Log.e("error : ", String.valueOf(error));
                     }
                 });
-                break;
-            case addTouch:
-                databaseQuery.addValueEventListener(new ValueEventListener() {
-                    @Override
-
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String newPrPopular, prPopular = "0", prNo = "0";
-                        for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            prPopular = dataSnapshot.child("pr_popular").getValue(Long.class).toString();
-                            newPrPopular = Integer.toString(Integer.parseInt(prPopular)+1);
-                            prNo = dataSnapshot.child("pr_no").getValue(Long.class).toString();
-                           // databaseReference.child("pr_no").child(prNo).child("pr_popular").setValue(newPrPopular);
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Log.e("error : ", String.valueOf(error));
-                    }
-                });
-                break;
+//            case addTouch:
+//                databaseQuery.addValueEventListener(new ValueEventListener() {
+//                    @Override
+//
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        DatabaseReference dr= databaseReference.child("pr_table").child(String.valueOf(no)).child("pr_popular");
+//                        String prPopular = "0";
+//                        int newPrPopular;
+//                        for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
+//                            //prPopular = dataSnapshot.child("pr_price").getValue(Integer.class).toString();
+//                            prPopular = dataSnapshot.child("pr_popular").getValue(Integer.class).toString();
+//                            newPrPopular = Integer.parseInt(prPopular)+1;
+//                            dr.setValue(newPrPopular);
+//                            break;
+//                        }
+//
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//                        Log.e("error : ", String.valueOf(error));
+//                    }
+//                });
+//                break;
         }
 
     }
