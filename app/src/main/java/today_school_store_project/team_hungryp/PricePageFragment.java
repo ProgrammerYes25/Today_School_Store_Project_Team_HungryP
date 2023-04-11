@@ -117,6 +117,7 @@ public class PricePageFragment extends Fragment {
             }
         };
         no ="0";
+        popular =0;
         priceListview.setAdapter(adapter);
         priceListview.setOnItemClickListener(onItemClickListener);
         database = MainActivity.databaseHelper.getDatabase();
@@ -130,12 +131,12 @@ public class PricePageFragment extends Fragment {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             int prNo = position+catecoryNum;
-            Log.d("확인 : ", "Go to MakeList");
+            Log.d("확인 : ", "Go to MakeList"+position);
             Query databaseQuery = databaseReference.orderByChild("pr_catecory_no").equalTo(prNo);
             setMakeDialog(databaseQuery);
             //Log.d("확인 : ","다시 돌아왔다.");
             //databaseReference.child(no).child("pr_popular").setValue(popular);
-            databaseReference.child(no).child("pr_popular").setValue(popular);
+            databaseReference.child("0").child("pr_popular").setValue(popular);
 
         }
     };
@@ -167,7 +168,7 @@ public class PricePageFragment extends Fragment {
 
                 Log.d("확인", snapshot + "확인");
                 String name = "이름", price = "가격";
-                Integer prPopular = null, prPrice = null;
+                Integer prPopular =0, prPrice = null;
                 Integer newPrPopular = null;
 //                        DatabaseReference dr= database.getReference("pr_table").getDatabase().getReference(String.valueOf(no)).getDatabase().getReference("pr_popular");
                 Log.d("레퍼런스확인 : ", databaseReference + "");
@@ -176,7 +177,7 @@ public class PricePageFragment extends Fragment {
                     prPrice = dataSnapshot.child("pr_price").getValue(Integer.class);
                     price = prPrice.toString();
                     prPopular = dataSnapshot.child("pr_popular").getValue(Integer.class);
-                    no = Objects.requireNonNull(dataSnapshot.child("pr_no").getValue(Integer.class)).toString();
+                    no =dataSnapshot.child("pr_no").getValue(Integer.class).toString();
                 }
                 Log.d("확인", no+" + " +name + " + " + price + " + " + prPopular);
                 DialogClass dlg = new DialogClass(MainActivity.context, name, price);
