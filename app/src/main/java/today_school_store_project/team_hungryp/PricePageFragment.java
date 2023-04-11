@@ -136,7 +136,8 @@ public class PricePageFragment extends Fragment {
             setMakeDialog(databaseQuery);
             //Log.d("확인 : ","다시 돌아왔다.");
             //databaseReference.child(no).child("pr_popular").setValue(popular);
-            databaseReference.child("0").child("pr_popular").setValue(popular);
+            Log.d("값 확인 : ", popular + "개");
+            databaseReference.child(no).child("pr_popular").setValue(popular);
 
         }
     };
@@ -182,7 +183,7 @@ public class PricePageFragment extends Fragment {
                 Log.d("확인", no+" + " +name + " + " + price + " + " + prPopular);
                 DialogClass dlg = new DialogClass(MainActivity.context, name, price);
                 dlg.show();
-                newPrPopular = Integer.valueOf(String.valueOf(prPopular + 1));
+                newPrPopular = prPopular + 1;
                 Log.d("값 확인 : ", newPrPopular + "개");
                 popular = newPrPopular;
             }
