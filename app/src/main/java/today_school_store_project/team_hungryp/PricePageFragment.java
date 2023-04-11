@@ -53,7 +53,10 @@ public class PricePageFragment extends Fragment {
     //Firebase Database
     FirebaseDatabase database;
     DatabaseReference databaseReference;
-    int catecoryNum, no, popular;
+    int catecoryNum;
+    Integer popular;
+    String no;
+
     Map<String, Object> prMap;
     TextView drinkCategory;
     TextView snackCategory;
@@ -109,9 +112,11 @@ public class PricePageFragment extends Fragment {
                 tv.setTextColor(Color.BLACK);
                 tv.setPadding(40, 20, 20, 20);
                 tv.setBackgroundResource(R.drawable.textlayout);
+
                 return view;
             }
         };
+        no ="0";
         priceListview.setAdapter(adapter);
         priceListview.setOnItemClickListener(onItemClickListener);
         database = MainActivity.databaseHelper.getDatabase();
@@ -125,11 +130,13 @@ public class PricePageFragment extends Fragment {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             int prNo = position+catecoryNum;
-            no = position;
-            Query databaseQuery = databaseReference.orderByChild("pr_no").equalTo(prNo);
+            Log.d("확인 : ", "Go to MakeList");
+            Query databaseQuery = databaseReference.orderByChild("pr_catecory_no").equalTo(prNo);
             setMakeDialog(databaseQuery);
             //Log.d("확인 : ","다시 돌아왔다.");
-            databaseReference.child(String.valueOf(no)).child("pr_popular").setValue(popular);
+            //databaseReference.child(no).child("pr_popular").setValue(popular);
+            databaseReference.child(no).child("pr_popular").setValue(popular);
+
         }
     };
     // Database에서 Qurey를 이용하여 data 가져와서 ListView에 넣기
@@ -138,6 +145,7 @@ public class PricePageFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 totalList.clear();
+                Log.d("확인 : ", "MakeList");
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     String name = dataSnapshot.child("pr_name").getValue(String.class);
                     String price = dataSnapshot.child("pr_price").getValue(Integer.class).toString();
@@ -168,12 +176,12 @@ public class PricePageFragment extends Fragment {
                     prPrice = dataSnapshot.child("pr_price").getValue(Integer.class);
                     price = prPrice.toString();
                     prPopular = dataSnapshot.child("pr_popular").getValue(Integer.class);
+                    no = Objects.requireNonNull(dataSnapshot.child("pr_no").getValue(Integer.class)).toString();
                 }
-                Log.d("확인", name + " + " + price + " + " + prPopular);
+                Log.d("확인", no+" + " +name + " + " + price + " + " + prPopular);
                 DialogClass dlg = new DialogClass(MainActivity.context, name, price);
                 dlg.show();
-                int i = Integer.parseInt(String.valueOf(prPopular + 1));
-                newPrPopular = Integer.valueOf(i);
+                newPrPopular = Integer.valueOf(String.valueOf(prPopular + 1));
                 Log.d("값 확인 : ", newPrPopular + "개");
                 popular = newPrPopular;
             }
