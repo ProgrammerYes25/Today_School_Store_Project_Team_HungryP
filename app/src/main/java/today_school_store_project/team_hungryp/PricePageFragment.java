@@ -30,6 +30,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.auth.User;
+import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,6 +53,7 @@ public class PricePageFragment extends Fragment {
     // !SQLite
     //Firebase Database
     FirebaseDatabase database;
+    FirebaseStorage storage;
     DatabaseReference databaseReference;
     int catecoryNum;
     Integer popular;
@@ -122,6 +124,7 @@ public class PricePageFragment extends Fragment {
         priceListview.setOnItemClickListener(onItemClickListener);
         database = MainActivity.databaseHelper.getDatabase();
         databaseReference = database.getReference("pr_table");
+        storage = MainActivity.storageHelper.getDatabase();
         Query databaseQuery = databaseReference.orderByChild("pr_category").equalTo("음료류");
         setDatabaseQuery(databaseQuery);
         return view;

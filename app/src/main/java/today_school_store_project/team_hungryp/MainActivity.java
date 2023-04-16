@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 
 public class MainActivity extends AppCompatActivity {
     public static Context context;
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Firebase Database
     static FirebaseDatabaseHelper databaseHelper;
-
+    static FirebaseStorageHelper storageHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
         // Firebase Database
         databaseHelper = new FirebaseDatabaseHelper();
         FirebaseDatabase database = databaseHelper.getDatabase();
-
+        storageHelper = new FirebaseStorageHelper();
+        FirebaseStorage storage = storageHelper.getDatabase();
         context = this;
 
         //네비게이션바 플레그먼트 정의
