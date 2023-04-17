@@ -31,6 +31,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.auth.User;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,6 +56,7 @@ public class PricePageFragment extends Fragment {
     FirebaseDatabase database;
     FirebaseStorage storage;
     DatabaseReference databaseReference;
+
     int catecoryNum;
     Integer popular;
     String no;
@@ -184,7 +186,9 @@ public class PricePageFragment extends Fragment {
                     no =dataSnapshot.child("pr_no").getValue(Integer.class).toString();
                 }
                 Log.d("확인", no+" + " +name + " + " + price + " + " + prPopular);
-                DialogClass dlg = new DialogClass(MainActivity.context, name, price);
+                StorageReference storageReference = storage.getReference();
+                StorageReference storageReferenceImage = storageReference.child("pr_"+no+".png");
+                DialogClass dlg = new DialogClass(MainActivity.context, name, price, storageReferenceImage);
                 dlg.show();
                 newPrPopular = prPopular + 1;
                 Log.d("값 확인 : ", newPrPopular + "개");
