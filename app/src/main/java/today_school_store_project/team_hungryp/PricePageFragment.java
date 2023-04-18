@@ -188,8 +188,12 @@ public class PricePageFragment extends Fragment {
                 Log.d("확인", no+" + " +name + " + " + price + " + " + prPopular);
                 StorageReference storageReference = storage.getReference();
                 StorageReference storageReferenceImage = storageReference.child("pr_"+no+".png");
-                DialogClass dlg = new DialogClass(MainActivity.context, name, price, storageReferenceImage);
-                dlg.show();
+                if(storageReferenceImage!=null){
+                    DialogClass dlg = new DialogClass(MainActivity.context, name, price, storageReferenceImage);
+                    dlg.show();
+                }else{
+                    Log.d("확인 : ", "가져오기 실패");
+                }
                 newPrPopular = prPopular + 1;
                 Log.d("값 확인 : ", newPrPopular + "개");
                 popular = newPrPopular;

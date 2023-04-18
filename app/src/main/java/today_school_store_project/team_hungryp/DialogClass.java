@@ -35,7 +35,12 @@ public class DialogClass extends Dialog {
         this.price = price;
         this.storageReference =storageReference;
     }
-
+    public DialogClass(@NonNull Context context, String name, String price) {
+        super(context);
+        this.context = context;
+        this.name = name;
+        this.price = price;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,21 +50,24 @@ public class DialogClass extends Dialog {
         nameTextview = findViewById(R.id.name_text_view);
         priceTextview = findViewById(R.id.price_text_view);
         okButton = findViewById(R.id.ok_button);
-
+        prImageView = findViewById(R.id.pr_image_view);
         nameTextview.setText(name);
         priceTextview.setText("가격 : "+price+"원");
         if(storageReference!=null){
             //참조객체로 부터 이미지의 다운로드 URL을 얻어오기
+            Log.d("확인", "가져오기 성공");
             storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
-                    Log.d("확인", "img"+uri);
+                    //Log.d("확인", "가져오기 성공");
                     //다운로드 URL이 파라미터로 전달되어 옴.
                     Glide.with(context).load(uri).into(prImageView);
                 }
             });
 
-        }
+        }else{
+                    Log.d("확인 : ", "가져오기 실패");
+                }
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
