@@ -22,7 +22,7 @@ import java.util.Objects;
 
 public class DialogClass extends Dialog {
     Context context;
-    String name, price;
+    String name, price, image;
     ImageView prImageView;
     TextView nameTextview, priceTextview;
     Button okButton;
@@ -55,7 +55,7 @@ public class DialogClass extends Dialog {
         priceTextview.setText("가격 : "+price+"원");
         if(storageReference!=null){
             //참조객체로 부터 이미지의 다운로드 URL을 얻어오기
-            Log.d("확인", "가져오기 성공");
+            Log.d("확인", "가져오기 성공"+storageReference);
             storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
@@ -72,6 +72,7 @@ public class DialogClass extends Dialog {
             @Override
             public void onClick(View v) {
                 dismiss();
+                cancel();
             }
         });
     }

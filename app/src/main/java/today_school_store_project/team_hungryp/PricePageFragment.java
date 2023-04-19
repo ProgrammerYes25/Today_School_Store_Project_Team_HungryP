@@ -168,12 +168,13 @@ public class PricePageFragment extends Fragment {
     }
 
     public void setMakeDialog(Query databaseQuery){
+        //databaseReference.child(no).child("pr_popular").setValue(popular);
         databaseQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 Log.d("확인", snapshot + "확인");
-                String name = "이름", price = "가격";
+                String name = "이름", price = "가격", image = "이미지";
                 Integer prPopular =0, prPrice = null;
                 Integer newPrPopular = null;
 //                        DatabaseReference dr= database.getReference("pr_table").getDatabase().getReference(String.valueOf(no)).getDatabase().getReference("pr_popular");
@@ -184,10 +185,11 @@ public class PricePageFragment extends Fragment {
                     price = prPrice.toString();
                     prPopular = dataSnapshot.child("pr_popular").getValue(Integer.class);
                     no =dataSnapshot.child("pr_no").getValue(Integer.class).toString();
+                    image = dataSnapshot.child("pr_image_no").getValue(String.class);
                 }
                 Log.d("확인", no+" + " +name + " + " + price + " + " + prPopular);
                 StorageReference storageReference = storage.getReference();
-                StorageReference storageReferenceImage = storageReference.child("pr_"+no+".png");
+                StorageReference storageReferenceImage = storageReference.child(image+".png");
                 if(storageReferenceImage!=null){
                     DialogClass dlg = new DialogClass(MainActivity.context, name, price, storageReferenceImage);
                     dlg.show();
@@ -197,6 +199,7 @@ public class PricePageFragment extends Fragment {
                 newPrPopular = prPopular + 1;
                 Log.d("값 확인 : ", newPrPopular + "개");
                 popular = newPrPopular;
+
             }
 
             @Override
