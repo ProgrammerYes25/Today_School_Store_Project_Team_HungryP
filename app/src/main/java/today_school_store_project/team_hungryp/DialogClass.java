@@ -73,6 +73,7 @@ public class DialogClass extends Dialog {
             public void onClick(View v) {
                 dismiss();
                 cancel();
+                Log.d("확인 : ", "창 닫기");
             }
         });
     }
