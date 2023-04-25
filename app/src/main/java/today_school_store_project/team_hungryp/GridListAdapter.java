@@ -2,10 +2,13 @@ package today_school_store_project.team_hungryp;
 
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -40,6 +43,8 @@ public class GridListAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.layout_grid_view, viewGroup,false);
         }
+        ImageView popularimage = view.findViewById(R.id.popular_image_view);
+        TextView nameText = view.findViewById(R.id.popular_text_view);
         return view;
     }
 

@@ -4,9 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ImageView
+        android:id="@+id/popular_image_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <TextView
+        android:id="@+id/popular_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
