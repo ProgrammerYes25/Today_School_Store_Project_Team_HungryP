@@ -45,7 +45,7 @@ public class DialogClass extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_dialog);
-
+        Log.d("호출 확인 : ", "DialogClass");
         Objects.requireNonNull(getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         nameTextview = findViewById(R.id.name_text_view);
         priceTextview = findViewById(R.id.price_text_view);
@@ -71,6 +71,7 @@ public class DialogClass extends Dialog {
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("호출 확인 : ", "okButton.setOnClickListener()");
                 dismiss();
                 cancel();
                 Log.d("확인 : ", "창 닫기");

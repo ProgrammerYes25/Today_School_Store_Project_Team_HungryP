@@ -119,6 +119,7 @@ public class PricePageFragment extends Fragment {
         storage = MainActivity.storageHelper.getDatabase();
         dlg = null;
         Query databaseQuery = databaseReferenceGet.orderByChild("pr_category").equalTo("음료류");
+
         setDatabaseQuery(databaseQuery);
         return view;
     }
