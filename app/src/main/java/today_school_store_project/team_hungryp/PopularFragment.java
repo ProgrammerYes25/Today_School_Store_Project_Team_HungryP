@@ -38,7 +38,7 @@ public class PopularFragment extends Fragment {
         storage = MainActivity.storageHelper.getDatabase();
 
 
-        Query databaseQuery = databaseReferenceGet.orderByChild("pr_popular").limitToFirst(10);
+        Query databaseQuery = databaseReferenceGet.orderByChild("pr_popular").limitToLast(9);
         databaseQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
