@@ -8,7 +8,8 @@
         android:id="@+id/popular_image_view"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_margin="25dp"/>
+        android:gravity="center"
+        android:layout_margin="20dp"/>
     <TextView
         android:id="@+id/popular_text_view"
         android:layout_width="150dp"
