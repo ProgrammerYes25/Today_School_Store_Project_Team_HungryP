@@ -24,6 +24,7 @@
                 android:layout_marginTop="60dp"
                 android:layout_gravity="center_vertical"/>
             <LinearLayout
+                android:id="@+id/salepage_product_ll"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +35,14 @@ public class SalePageFragment extends Fragment {
         imgV1 = view.findViewById(R.id.imgv1);
         textvi = view.findViewById(R.id.textv);
 
-
+        LinearLayout linearLayout = view.findViewById(R.id.salepage_product_ll);
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity mainActivity = (MainActivity) getActivity();
+                mainActivity.navigateToPriceFragment();
+            }
+        });
 
         databaesHelper = new DatabaesHelper(MainActivity.context);
         sqlDB = databaesHelper.getReadableDatabase();

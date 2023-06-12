@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -39,6 +40,16 @@ public class NewPageFragment extends Fragment {
 //        imgV2 = view.findViewById(R.id.imgv2);
 //        imgV3 = view.findViewById(R.id.imgv3);
         textvi = view.findViewById(R.id.textv);
+
+        LinearLayout linearLayout = view.findViewById(R.id.newpage_product_ll);
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity mainActivity = (MainActivity) getActivity();
+                mainActivity.navigateToPriceFragment();
+            }
+        });
+
 
 
 

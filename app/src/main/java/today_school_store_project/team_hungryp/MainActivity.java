@@ -3,12 +3,14 @@ package today_school_store_project.team_hungryp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 //import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Process;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -17,6 +19,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 
 public class MainActivity extends AppCompatActivity {
+    public void navigateToPriceFragment() {
+        PricePageFragment priceFragment = new PricePageFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.main_frame_layout, priceFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
     public static Context context;
     private long backBtnTime = 0l;  //뒤로가기 누른 횟수 계산하기 위한 변수
 
@@ -26,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     //!SQLite
     Fragment newPageFragment, salePageFragment, mainFragment, pricePageFragment, popularFragment;
     BottomNavigationView mainBottomNavigationView;
-
+    LinearLayout productLinear;
     // Firebase Database
     static FirebaseDatabaseHelper databaseHelper;
     static FirebaseStorageHelper storageHelper;
@@ -95,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.new_item:
                     setTitle("신규 상품 페이지");
                     getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, newPageFragment).commitAllowingStateLoss();
+
                     break;
                 case R.id.money_off_item:
                     setTitle("할인 상품 페이지");
