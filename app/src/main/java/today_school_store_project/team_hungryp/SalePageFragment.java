@@ -37,12 +37,12 @@ public class SalePageFragment extends Fragment {
 
 
         databaesHelper = new DatabaesHelper(MainActivity.context);
-        //sqlDB = databaesHelper.getReadableDatabase();
-        //Cursor cursor;
-        //cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_dcprice = 1;",null);
-        //textList = new ArrayList<String>();
-        //setTextList(cursor);
-        //textvi.setText(textList.get(foodi));
+        sqlDB = databaesHelper.getReadableDatabase();
+        Cursor cursor;
+        cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_dcprice = 1;",null);
+        textList = new ArrayList<String>();
+        setTextList(cursor);
+        textvi.setText(textList.get(foodi));
         rbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

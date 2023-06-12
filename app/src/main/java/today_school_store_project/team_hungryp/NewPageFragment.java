@@ -29,29 +29,28 @@ public class NewPageFragment extends Fragment {
                              Bundle savedInstanceState) {
         // 플레그먼트를 메인에 넘길 뷰 정의
         View view = inflater.inflate(R.layout.fragment_new_page, container, false);
-        ViewFlipper viewFlip2 = view.findViewById(R.id.viewFlip2);
-        viewFlip2.setFlipInterval(5000);
-        viewFlip2.startFlipping();
+//        ViewFlipper viewFlip2 = view.findViewById(R.id.viewFlip2);
+//        viewFlip2.setFlipInterval(5000);
+//        viewFlip2.startFlipping();
 //        setTitle("신규 상품 페이지");
         rbtn = view.findViewById(R.id.r);
         lbtn = view.findViewById(R.id.l);
         imgV1 = view.findViewById(R.id.imgv1);
-        imgV2 = view.findViewById(R.id.imgv2);
-        imgV3 = view.findViewById(R.id.imgv3);
+//        imgV2 = view.findViewById(R.id.imgv2);
+//        imgV3 = view.findViewById(R.id.imgv3);
         textvi = view.findViewById(R.id.textv);
 
 
 
         databaesHelper = new DatabaesHelper(MainActivity.context);
-        // sqlDB = databaesHelper.getReadableDatabase();
-        //Cursor cursor;
-        //cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_new = 1;",null);
-        //textList = new ArrayList<String>();
-        //setTextList(cursor);
-        //imgV1.setImageResource(food[foodi]);
-        //textvi.setText(textList.get(foodi));
-        rbtn.setOnClickListener(new View.
-                OnClickListener() {
+         sqlDB = databaesHelper.getReadableDatabase();
+        Cursor cursor;
+        cursor = sqlDB.rawQuery("SELEct * From prTable Where pr_new = 1;",null);
+        textList = new ArrayList<String>();
+        setTextList(cursor);
+        imgV1.setImageResource(food[foodi]);
+        textvi.setText(textList.get(foodi));
+        rbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(textList.get(0).equals("현재 할인상품이 없습니다.\n업데이트를 기대해주세요" )){
