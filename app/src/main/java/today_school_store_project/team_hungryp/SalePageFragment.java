@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -30,6 +34,7 @@ public class SalePageFragment extends Fragment {
     ImageView rbtn, lbtn, imgV1;
     TextView textvi;
     ArrayList<String> textList;
+    ArrayList<String> imageList;
     FirebaseDatabase database;
     FirebaseStorage storage;
     DatabaseReference databaseReferenceGet, databaseReferenceSet;
@@ -46,6 +51,7 @@ public class SalePageFragment extends Fragment {
         imgV1 = view.findViewById(R.id.imgv1);
         textvi = view.findViewById(R.id.textv);
         textList = new ArrayList<>();
+        imageList = new ArrayList<>();
         LinearLayout linearLayout = view.findViewById(R.id.salepage_product_ll);
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +85,7 @@ public class SalePageFragment extends Fragment {
         databaseQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String image="";
                 textList.clear();
                 Log.d("확인 : ", "MakeList");
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
@@ -86,6 +93,9 @@ public class SalePageFragment extends Fragment {
                     String price = dataSnapshot.child("pr_price").getValue(Integer.class).toString();
                     String sale = dataSnapshot.child("pr_sale").getValue(Integer.class).toString();
                     textList.add(name+"\n 가격 : "+price+" 원 ->> "+sale+"원");
+                    image = dataSnapshot.child("pr_image_no").getValue(String.class);
+                    Log.d("확인 : ",textList+", "+image);
+                    imageList.add(image);
                     Log.d("확인 : ", name+"\n 가격 : "+price+" 원");
                 }
                 Log.d("확인 : ",textList+"");
@@ -93,6 +103,7 @@ public class SalePageFragment extends Fragment {
                 textvi.setText(textList.get(0));
                 rbtn.setOnClickListener(onClickListener);
                 lbtn.setOnClickListener(onClickListener);
+                setImageStorageReference(0);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -101,7 +112,27 @@ public class SalePageFragment extends Fragment {
         });
 
     }
+    public void setImageStorageReference(int i){
+        StorageReference storageReference = storage.getReference();
+        String image = imageList.get(i);
+        StorageReference storageReferenceImage = storageReference.child(image+".png");
+        if(storageReferenceImage!=null){
+            //참조객체로 부터 이미지의 다운로드 URL을 얻어오기
+            Log.d("확인", "가져오기 성공"+storageReference);
+            storageReferenceImage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    //Log.d("확인", "가져오기 성공");
+                    //다운로드 URL이 파라미터로 전달되어 옴.
+                    Glide.with(MainActivity.context).load(uri).into(imgV1);
+                }
+            });
 
+            Log.d("확인 : ", "창 띄위기");
+        }else{
+            Log.d("확인 : ", "가져오기 실패");
+        }
+    }
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -116,6 +147,7 @@ public class SalePageFragment extends Fragment {
                     }
                     //imgV1.setImageResource(food[foodi]);    //이미지 바꿈
                     textvi.setText(textList.get(foodi));
+                    setImageStorageReference(foodi);
                     break;
                 case R.id.l:
                     if(textList.get(0).equals("현재 할인상품이 없습니다.\n업데이트를 기대해주세요" )){
@@ -127,6 +159,7 @@ public class SalePageFragment extends Fragment {
                     }
                     //imgV1.setImageResource(food[foodi]);    //이미지 바꿈
                     textvi.setText(textList.get(foodi));
+                    setImageStorageReference(foodi);
                     break;
             }
         }
