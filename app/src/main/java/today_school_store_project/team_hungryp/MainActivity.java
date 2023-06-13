@@ -104,24 +104,24 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()){
                 case R.id.new_item:
                     setTitle("신규 상품 페이지");
-                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, newPageFragment).commitAllowingStateLoss();
+                    replaceFragment( newPageFragment);
 
                     break;
                 case R.id.money_off_item:
                     setTitle("할인 상품 페이지");
-                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, salePageFragment).commitAllowingStateLoss();
+                    replaceFragment(salePageFragment);
                     break;
                 case R.id.home_item:
                     setTitle("홈");
-                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, mainFragment).commitAllowingStateLoss();
+                    replaceFragment( mainFragment);
                     break;
                 case R.id.store_item:
                     setTitle("가격 페이지");
-                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, pricePageFragment).commitAllowingStateLoss();
+                    replaceFragment(pricePageFragment);
                     break;
                 case R.id.star_item:
                     setTitle("인기 상품 페이지");
-                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, popularFragment).commitAllowingStateLoss();
+                    replaceFragment(popularFragment);
                     break;
             }
             return true;
