@@ -88,12 +88,9 @@ public class NewPageFragment extends Fragment {
 
         return view;
     }
-    public void setTextList(Cursor cursor){
-        if(cursor.isAfterLast()){
+    public void setTextList(){
+        if(textList.get(0).equals(null)) {
             textList.add("현재 신상품이 없습니다.\n업데이트를 기대해주세요");
-        }
-        while(cursor.moveToNext()){
-            textList.add(cursor.getString(1));
         }
     }
 
@@ -111,8 +108,11 @@ public class NewPageFragment extends Fragment {
                     Log.d("확인 : ", name+"\n 가격 : "+price+" 원");
                 }
                 Log.d("확인 : ",textList+"");
+                setTextList();
+                textvi.setText(textList.get(0));
                 rbtn.setOnClickListener(onClickListener);
                 lbtn.setOnClickListener(onClickListener);
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -126,7 +126,7 @@ public class NewPageFragment extends Fragment {
         public void onClick(View view) {
             switch (view.getId()){
                 case R.id.r:
-                    if(textList.get(0).equals("현재 할인상품이 없습니다.\n업데이트를 기대해주세요" )){
+                    if(textList.get(0).equals("현재 신상품이 없습니다.\n업데이트를 기대해주세요" )){
                         Toast.makeText(MainActivity.context, "현재 할인상품이" +
                                 " 없습니다.", Toast.LENGTH_SHORT).show();
                     }
@@ -138,7 +138,7 @@ public class NewPageFragment extends Fragment {
                     textvi.setText(textList.get(foodi));
                     break;
                 case R.id.l:
-                    if(textList.get(0).equals("현재 할인상품이 없습니다.\n업데이트를 기대해주세요" )){
+                    if(textList.get(0).equals("현재 신상품이 없습니다.\n업데이트를 기대해주세요" )){
                         Toast.makeText(MainActivity.context, "현재 할인상품이 없습니다.", Toast.LENGTH_SHORT).show();
                     }
                     foodi--;        //배열 넘어가는 인덱스

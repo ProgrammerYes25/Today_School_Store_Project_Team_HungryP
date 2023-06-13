@@ -78,7 +78,7 @@
                     android:textColor="#FFFFFF"
                     android:layout_marginTop="15dp"
                     android:textSize="20sp"
-                    android:text="피자빵"/>
+                  />
 
             </LinearLayout>
             <ImageView
