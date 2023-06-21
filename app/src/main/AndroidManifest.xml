@@ -14,7 +14,8 @@
         android:theme="@style/Theme.Today_School_Store_Project_Team_HungryP">
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.Today_School_Store_Project_Team_HungryP.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -21,4 +21,8 @@
         parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="Theme.Today_School_Store_Project_Team_HungryP.PopupOverlay"
         parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.Today_School_Store_Project_Team_HungryP.Splash">
+        <item name="android:statusBarColor">#6667AB</item>
+        <item name="android:windowBackground">#FFFFFF</item>
+    </style>
 </resources>
