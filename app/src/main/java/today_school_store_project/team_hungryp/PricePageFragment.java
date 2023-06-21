@@ -57,7 +57,7 @@ public class PricePageFragment extends Fragment {
     TextView icecreamCategory;
     TextView iceCategory;
     TextView etcCategory;
-
+    Query databaseQueryD;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -181,6 +181,7 @@ public class PricePageFragment extends Fragment {
                     prPopular = dataSnapshot.child("pr_popular").getValue(Integer.class);
                     no =dataSnapshot.child("pr_no").getValue(Integer.class).toString();
                     image = dataSnapshot.child("pr_image_no").getValue(String.class);
+                    break;
                 }
                 Log.d("확인 :", no+" + " +name + " + " + price + " + " + prPopular);
                 StorageReference storageReference = storage.getReference();
