@@ -17,8 +17,8 @@ buildscript {
 }
 
 plugins {
-    id 'com.android.application' version '7.4.1' apply false
-    id 'com.android.library' version '7.4.1' apply false
+    id 'com.android.application' version '7.4.2' apply false
+    id 'com.android.library' version '7.4.2' apply false
     //구글 서비스 추가
     id 'com.google.gms.google-services' version '4.3.13' apply false
 

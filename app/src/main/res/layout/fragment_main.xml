@@ -15,32 +15,38 @@
         android:layout_margin="10dp"
         android:layout_weight="1"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:padding="15dp"
+            android:layout_height="817dp"
             android:layout_gravity="center"
-            android:orientation="horizontal">
+            android:layout_marginTop="30dp"
+            android:layout_weight="2"
+            android:orientation="horizontal"
+            android:padding="15dp">
+
             <ViewFlipper
                 android:id="@+id/viewFlip"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/piknic"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/piknic" />
+
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/chocolate"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/chocolate" />
+
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/bananamilk"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bananamilk" />
             </ViewFlipper>
             <!--        <ImageView
                         android:layout_width="wrap_content"
@@ -53,7 +59,7 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center_horizontal"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             >
             <TextView
                 android:id="@+id/menu_text_view"
@@ -63,20 +69,27 @@
                 android:textStyle="bold"
                 android:textSize="10pt"
                 android:padding="10dp"
+                android:layout_marginBottom="10dp"
                 android:text="MENU"/>
+
             <ImageView
                 android:id="@+id/imgv_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/menu_text_view"
-                android:layout_margin="10dp"
-                android:src="@drawable/group_23"/>
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingBottom="6dp"
+                android:src="@drawable/group_23" />
             <ImageView
                 android:id="@+id/imgv_new"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/imgv_price"
                 android:layout_margin="10dp"
+                android:paddingBottom="6dp"
                 android:src="@drawable/group_22"/>
             <ImageView
                 android:id="@+id/imgv_sale"
@@ -84,6 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/imgv_new"
                 android:layout_margin="10dp"
+                android:paddingBottom="6dp"
                 android:src="@drawable/group_24"/>
             <ImageView
                 android:id="@+id/imgv_popular"
@@ -91,6 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/imgv_sale"
                 android:layout_margin="10dp"
+                android:paddingBottom="6dp"
                 android:src="@drawable/group_25"/>
         </RelativeLayout>
     </LinearLayout>
